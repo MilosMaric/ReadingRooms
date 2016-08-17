@@ -15,6 +15,7 @@ namespace API.Services.Interfaces
         Boolean Delete(long id);
         List<UniversityDTO> GetAll();
         UniversityDTO GetById(long id);
+
         List<FacultyDTO> GetFaculties(long uniId);
         List<ReadingRoomDTO> GetReadingRooms(long uniId);
     }

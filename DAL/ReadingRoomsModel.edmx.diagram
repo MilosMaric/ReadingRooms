@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f1e31347c00d4256b1a77ba1d2ed6dd3" Name="Diagram1">
+        <EntityTypeShape EntityType="ReadingRoomsModel.BLOG" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.FACULTY" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.POST" Width="1.5" PointX="9.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.READING_ROOM" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.REPORT" Width="1.5" PointX="12" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.RESERVATION" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.SEAT" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.THREAD" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.UNIVERSITY" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadingRoomsModel.USER" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_BLOG_RELATIONS_FACULTY" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_THREAD_RELATIONS_BLOG" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_FACULTY_RELATIONS_UNIVERSI" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_READING__RELATIONS_FACULTY" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_USER_RELATIONS_FACULTY" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_POST_RELATIONS_THREAD" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_POST_RELATIONS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_REPORT_RELATIONS_POST" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_READING__RELATIONS_UNIVERSI" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_SEAT_RELATIONS_READING_" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_REPORT_RELATIONS_THREAD" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_REPORT_RELATIONS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_RESERVAT_RELATIONS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.FK_THREAD_RELATIONS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadingRoomsModel.RESERVED_SEATS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

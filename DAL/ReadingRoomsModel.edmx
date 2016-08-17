@@ -1,0 +1,949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ReadingRoomsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ReadingRoomsModelStoreContainer">
+          <EntitySet Name="BLOG" EntityType="ReadingRoomsModel.Store.BLOG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FACULTY" EntityType="ReadingRoomsModel.Store.FACULTY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="POST" EntityType="ReadingRoomsModel.Store.POST" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="READING_ROOM" EntityType="ReadingRoomsModel.Store.READING_ROOM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="REPORT" EntityType="ReadingRoomsModel.Store.REPORT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RESERVATION" EntityType="ReadingRoomsModel.Store.RESERVATION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RESERVED_SEATS" EntityType="ReadingRoomsModel.Store.RESERVED_SEATS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SEAT" EntityType="ReadingRoomsModel.Store.SEAT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="THREAD" EntityType="ReadingRoomsModel.Store.THREAD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UNIVERSITY" EntityType="ReadingRoomsModel.Store.UNIVERSITY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USER" EntityType="ReadingRoomsModel.Store.USER" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BLOG_RELATIONS_FACULTY" Association="ReadingRoomsModel.Store.FK_BLOG_RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTY" />
+            <End Role="BLOG" EntitySet="BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACULTY_RELATIONS_UNIVERSI" Association="ReadingRoomsModel.Store.FK_FACULTY_RELATIONS_UNIVERSI">
+            <End Role="UNIVERSITY" EntitySet="UNIVERSITY" />
+            <End Role="FACULTY" EntitySet="FACULTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POST_RELATIONS_THREAD" Association="ReadingRoomsModel.Store.FK_POST_RELATIONS_THREAD">
+            <End Role="THREAD" EntitySet="THREAD" />
+            <End Role="POST" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POST_RELATIONS_USER" Association="ReadingRoomsModel.Store.FK_POST_RELATIONS_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="POST" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_READING__RELATIONS_FACULTY" Association="ReadingRoomsModel.Store.FK_READING__RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTY" />
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_READING__RELATIONS_UNIVERSI" Association="ReadingRoomsModel.Store.FK_READING__RELATIONS_UNIVERSI">
+            <End Role="UNIVERSITY" EntitySet="UNIVERSITY" />
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_POST" Association="ReadingRoomsModel.Store.FK_REPORT_RELATIONS_POST">
+            <End Role="POST" EntitySet="POST" />
+            <End Role="REPORT" EntitySet="REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_THREAD" Association="ReadingRoomsModel.Store.FK_REPORT_RELATIONS_THREAD">
+            <End Role="THREAD" EntitySet="THREAD" />
+            <End Role="REPORT" EntitySet="REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_USER" Association="ReadingRoomsModel.Store.FK_REPORT_RELATIONS_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="REPORT" EntitySet="REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVAT_RELATIONS_USER" Association="ReadingRoomsModel.Store.FK_RESERVAT_RELATIONS_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVED_RELATIONS_RESERVAT" Association="ReadingRoomsModel.Store.FK_RESERVED_RELATIONS_RESERVAT">
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+            <End Role="RESERVED_SEATS" EntitySet="RESERVED_SEATS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVED_RELATIONS_SEAT" Association="ReadingRoomsModel.Store.FK_RESERVED_RELATIONS_SEAT">
+            <End Role="SEAT" EntitySet="SEAT" />
+            <End Role="RESERVED_SEATS" EntitySet="RESERVED_SEATS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEAT_RELATIONS_READING_" Association="ReadingRoomsModel.Store.FK_SEAT_RELATIONS_READING_">
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+            <End Role="SEAT" EntitySet="SEAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THREAD_RELATIONS_BLOG" Association="ReadingRoomsModel.Store.FK_THREAD_RELATIONS_BLOG">
+            <End Role="BLOG" EntitySet="BLOG" />
+            <End Role="THREAD" EntitySet="THREAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THREAD_RELATIONS_USER" Association="ReadingRoomsModel.Store.FK_THREAD_RELATIONS_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="THREAD" EntitySet="THREAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RELATIONS_FACULTY" Association="ReadingRoomsModel.Store.FK_USER_RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTY" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BLOG">
+          <Key>
+            <PropertyRef Name="BLOG_ID" />
+          </Key>
+          <Property Name="BLOG_ID" Type="bigint" Nullable="false" />
+          <Property Name="FAC_ID" Type="bigint" Nullable="false" />
+          <Property Name="BLOG_NAME" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="FACULTY">
+          <Key>
+            <PropertyRef Name="FAC_ID" />
+          </Key>
+          <Property Name="FAC_ID" Type="bigint" Nullable="false" />
+          <Property Name="UNI_ID" Type="bigint" Nullable="false" />
+          <Property Name="FAC_NAME" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="FAC_ABBR" Type="varchar" MaxLength="10" />
+          <Property Name="FAC_ADDR" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="FAC_WEB" Type="varchar" MaxLength="100" />
+          <Property Name="FAC_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="FAC_TEL" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="POST">
+          <Key>
+            <PropertyRef Name="POST_ID" />
+          </Key>
+          <Property Name="POST_ID" Type="bigint" Nullable="false" />
+          <Property Name="USR_ID" Type="bigint" Nullable="false" />
+          <Property Name="THREAD_ID" Type="bigint" Nullable="false" />
+          <Property Name="POST_CON" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="POST_LIKES" Type="bigint" />
+          <Property Name="POST_DISLIKES" Type="bigint" />
+          <Property Name="POST_CRON" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="READING_ROOM">
+          <Key>
+            <PropertyRef Name="RROOM_ID" />
+          </Key>
+          <Property Name="RROOM_ID" Type="bigint" Nullable="false" />
+          <Property Name="FAC_ID" Type="bigint" />
+          <Property Name="UNI_ID" Type="bigint" />
+          <Property Name="RROOM_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="RROOM_LON" Type="decimal" Precision="10" Scale="6" />
+          <Property Name="RROOM_LAT" Type="decimal" Precision="10" Scale="6" />
+          <Property Name="RROOM_DIM" Type="int" Nullable="false" />
+          <Property Name="RROOM_WTF" Type="datetime" Nullable="false" />
+          <Property Name="RROOM_WTT" Type="datetime" Nullable="false" />
+          <Property Name="RROOM_IDX" Type="bit" Nullable="false" />
+          <Property Name="RROOM_IDXF" Type="datetime" />
+          <Property Name="RROOM_IDXT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="REPORT">
+          <Key>
+            <PropertyRef Name="REPO_ID" />
+          </Key>
+          <Property Name="REPO_ID" Type="bigint" Nullable="false" />
+          <Property Name="POST_ID" Type="bigint" />
+          <Property Name="USR_ID" Type="bigint" Nullable="false" />
+          <Property Name="THREAD_ID" Type="bigint" />
+          <Property Name="REPO_REASON" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="REPO_CRON" Type="datetime" Nullable="false" />
+          <Property Name="REPO_ACCEPT" Type="bit" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="bigint" Nullable="false" />
+          <Property Name="USR_ID" Type="bigint" Nullable="false" />
+          <Property Name="RES_ETA" Type="datetime" Nullable="false" />
+          <Property Name="RES_ETD" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESERVED_SEATS">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+            <PropertyRef Name="SEAT_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="bigint" Nullable="false" />
+          <Property Name="SEAT_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEAT">
+          <Key>
+            <PropertyRef Name="SEAT_ID" />
+          </Key>
+          <Property Name="SEAT_ID" Type="bigint" Nullable="false" />
+          <Property Name="RROOM_ID" Type="bigint" Nullable="false" />
+          <Property Name="SEAT_POSITION" Type="int" Nullable="false" />
+          <Property Name="SEAT_LABEL" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="THREAD">
+          <Key>
+            <PropertyRef Name="THREAD_ID" />
+          </Key>
+          <Property Name="THREAD_ID" Type="bigint" Nullable="false" />
+          <Property Name="BLOG_ID" Type="bigint" Nullable="false" />
+          <Property Name="USR_ID" Type="bigint" Nullable="false" />
+          <Property Name="THREAD_H" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="THREAD_CON" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="THREAD_CRON" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UNIVERSITY">
+          <Key>
+            <PropertyRef Name="UNI_ID" />
+          </Key>
+          <Property Name="UNI_ID" Type="bigint" Nullable="false" />
+          <Property Name="UNI_NAME" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="UNI_CITY" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USR_ID" />
+          </Key>
+          <Property Name="USR_ID" Type="bigint" Nullable="false" />
+          <Property Name="FAC_ID" Type="bigint" />
+          <Property Name="USR_USERNAME" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="USR_PASS" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="USR_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="USR_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="USR_LNAME" Type="varchar" MaxLength="100" />
+          <Property Name="USR_IDX" Type="varchar" MaxLength="100" />
+          <Property Name="USR_ROLE" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BLOG_RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.Store.FACULTY" Multiplicity="1" />
+          <End Role="BLOG" Type="ReadingRoomsModel.Store.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACULTY_RELATIONS_UNIVERSI">
+          <End Role="UNIVERSITY" Type="ReadingRoomsModel.Store.UNIVERSITY" Multiplicity="1" />
+          <End Role="FACULTY" Type="ReadingRoomsModel.Store.FACULTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIVERSITY">
+              <PropertyRef Name="UNI_ID" />
+            </Principal>
+            <Dependent Role="FACULTY">
+              <PropertyRef Name="UNI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POST_RELATIONS_THREAD">
+          <End Role="THREAD" Type="ReadingRoomsModel.Store.THREAD" Multiplicity="1" />
+          <End Role="POST" Type="ReadingRoomsModel.Store.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THREAD">
+              <PropertyRef Name="THREAD_ID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="THREAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POST_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.Store.USER" Multiplicity="1" />
+          <End Role="POST" Type="ReadingRoomsModel.Store.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_READING__RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.Store.FACULTY" Multiplicity="0..1" />
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.Store.READING_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="READING_ROOM">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_READING__RELATIONS_UNIVERSI">
+          <End Role="UNIVERSITY" Type="ReadingRoomsModel.Store.UNIVERSITY" Multiplicity="0..1" />
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.Store.READING_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIVERSITY">
+              <PropertyRef Name="UNI_ID" />
+            </Principal>
+            <Dependent Role="READING_ROOM">
+              <PropertyRef Name="UNI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_POST">
+          <End Role="POST" Type="ReadingRoomsModel.Store.POST" Multiplicity="0..1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.Store.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POST_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="POST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_THREAD">
+          <End Role="THREAD" Type="ReadingRoomsModel.Store.THREAD" Multiplicity="0..1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.Store.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THREAD">
+              <PropertyRef Name="THREAD_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="THREAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.Store.USER" Multiplicity="1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.Store.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVAT_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.Store.USER" Multiplicity="1" />
+          <End Role="RESERVATION" Type="ReadingRoomsModel.Store.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVED_RELATIONS_RESERVAT">
+          <End Role="RESERVATION" Type="ReadingRoomsModel.Store.RESERVATION" Multiplicity="1" />
+          <End Role="RESERVED_SEATS" Type="ReadingRoomsModel.Store.RESERVED_SEATS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATION">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="RESERVED_SEATS">
+              <PropertyRef Name="RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVED_RELATIONS_SEAT">
+          <End Role="SEAT" Type="ReadingRoomsModel.Store.SEAT" Multiplicity="1" />
+          <End Role="RESERVED_SEATS" Type="ReadingRoomsModel.Store.RESERVED_SEATS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEAT">
+              <PropertyRef Name="SEAT_ID" />
+            </Principal>
+            <Dependent Role="RESERVED_SEATS">
+              <PropertyRef Name="SEAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEAT_RELATIONS_READING_">
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.Store.READING_ROOM" Multiplicity="1" />
+          <End Role="SEAT" Type="ReadingRoomsModel.Store.SEAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READING_ROOM">
+              <PropertyRef Name="RROOM_ID" />
+            </Principal>
+            <Dependent Role="SEAT">
+              <PropertyRef Name="RROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THREAD_RELATIONS_BLOG">
+          <End Role="BLOG" Type="ReadingRoomsModel.Store.BLOG" Multiplicity="1" />
+          <End Role="THREAD" Type="ReadingRoomsModel.Store.THREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOG">
+              <PropertyRef Name="BLOG_ID" />
+            </Principal>
+            <Dependent Role="THREAD">
+              <PropertyRef Name="BLOG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THREAD_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.Store.USER" Multiplicity="1" />
+          <End Role="THREAD" Type="ReadingRoomsModel.Store.THREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="THREAD">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.Store.FACULTY" Multiplicity="0..1" />
+          <End Role="USER" Type="ReadingRoomsModel.Store.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReadingRoomsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ReadingRoomsEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BLOGs" EntityType="ReadingRoomsModel.BLOG" />
+          <EntitySet Name="FACULTies" EntityType="ReadingRoomsModel.FACULTY" />
+          <EntitySet Name="POSTs" EntityType="ReadingRoomsModel.POST" />
+          <EntitySet Name="READING_ROOM" EntityType="ReadingRoomsModel.READING_ROOM" />
+          <EntitySet Name="REPORTs" EntityType="ReadingRoomsModel.REPORT" />
+          <EntitySet Name="RESERVATIONs" EntityType="ReadingRoomsModel.RESERVATION" />
+          <EntitySet Name="SEATs" EntityType="ReadingRoomsModel.SEAT" />
+          <EntitySet Name="THREADs" EntityType="ReadingRoomsModel.THREAD" />
+          <EntitySet Name="UNIVERSITies" EntityType="ReadingRoomsModel.UNIVERSITY" />
+          <EntitySet Name="USERs" EntityType="ReadingRoomsModel.USER" />
+          <AssociationSet Name="FK_BLOG_RELATIONS_FACULTY" Association="ReadingRoomsModel.FK_BLOG_RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTies" />
+            <End Role="BLOG" EntitySet="BLOGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THREAD_RELATIONS_BLOG" Association="ReadingRoomsModel.FK_THREAD_RELATIONS_BLOG">
+            <End Role="BLOG" EntitySet="BLOGs" />
+            <End Role="THREAD" EntitySet="THREADs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACULTY_RELATIONS_UNIVERSI" Association="ReadingRoomsModel.FK_FACULTY_RELATIONS_UNIVERSI">
+            <End Role="UNIVERSITY" EntitySet="UNIVERSITies" />
+            <End Role="FACULTY" EntitySet="FACULTies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_READING__RELATIONS_FACULTY" Association="ReadingRoomsModel.FK_READING__RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTies" />
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RELATIONS_FACULTY" Association="ReadingRoomsModel.FK_USER_RELATIONS_FACULTY">
+            <End Role="FACULTY" EntitySet="FACULTies" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POST_RELATIONS_THREAD" Association="ReadingRoomsModel.FK_POST_RELATIONS_THREAD">
+            <End Role="THREAD" EntitySet="THREADs" />
+            <End Role="POST" EntitySet="POSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POST_RELATIONS_USER" Association="ReadingRoomsModel.FK_POST_RELATIONS_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="POST" EntitySet="POSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_POST" Association="ReadingRoomsModel.FK_REPORT_RELATIONS_POST">
+            <End Role="POST" EntitySet="POSTs" />
+            <End Role="REPORT" EntitySet="REPORTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_READING__RELATIONS_UNIVERSI" Association="ReadingRoomsModel.FK_READING__RELATIONS_UNIVERSI">
+            <End Role="UNIVERSITY" EntitySet="UNIVERSITies" />
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEAT_RELATIONS_READING_" Association="ReadingRoomsModel.FK_SEAT_RELATIONS_READING_">
+            <End Role="READING_ROOM" EntitySet="READING_ROOM" />
+            <End Role="SEAT" EntitySet="SEATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_THREAD" Association="ReadingRoomsModel.FK_REPORT_RELATIONS_THREAD">
+            <End Role="THREAD" EntitySet="THREADs" />
+            <End Role="REPORT" EntitySet="REPORTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_RELATIONS_USER" Association="ReadingRoomsModel.FK_REPORT_RELATIONS_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="REPORT" EntitySet="REPORTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVAT_RELATIONS_USER" Association="ReadingRoomsModel.FK_RESERVAT_RELATIONS_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="RESERVATION" EntitySet="RESERVATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THREAD_RELATIONS_USER" Association="ReadingRoomsModel.FK_THREAD_RELATIONS_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="THREAD" EntitySet="THREADs" />
+          </AssociationSet>
+          <AssociationSet Name="RESERVED_SEATS" Association="ReadingRoomsModel.RESERVED_SEATS">
+            <End Role="RESERVATION" EntitySet="RESERVATIONs" />
+            <End Role="SEAT" EntitySet="SEATs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BLOG">
+          <Key>
+            <PropertyRef Name="BLOG_ID" />
+          </Key>
+          <Property Name="BLOG_ID" Type="Int64" Nullable="false" />
+          <Property Name="FAC_ID" Type="Int64" Nullable="false" />
+          <Property Name="BLOG_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="FACULTY" Relationship="ReadingRoomsModel.FK_BLOG_RELATIONS_FACULTY" FromRole="BLOG" ToRole="FACULTY" />
+          <NavigationProperty Name="THREADs" Relationship="ReadingRoomsModel.FK_THREAD_RELATIONS_BLOG" FromRole="BLOG" ToRole="THREAD" />
+        </EntityType>
+        <EntityType Name="FACULTY">
+          <Key>
+            <PropertyRef Name="FAC_ID" />
+          </Key>
+          <Property Name="FAC_ID" Type="Int64" Nullable="false" />
+          <Property Name="UNI_ID" Type="Int64" Nullable="false" />
+          <Property Name="FAC_NAME" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="FAC_ABBR" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="FAC_ADDR" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FAC_WEB" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FAC_EMAIL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FAC_TEL" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BLOGs" Relationship="ReadingRoomsModel.FK_BLOG_RELATIONS_FACULTY" FromRole="FACULTY" ToRole="BLOG" />
+          <NavigationProperty Name="UNIVERSITY" Relationship="ReadingRoomsModel.FK_FACULTY_RELATIONS_UNIVERSI" FromRole="FACULTY" ToRole="UNIVERSITY" />
+          <NavigationProperty Name="READING_ROOM" Relationship="ReadingRoomsModel.FK_READING__RELATIONS_FACULTY" FromRole="FACULTY" ToRole="READING_ROOM" />
+          <NavigationProperty Name="USERs" Relationship="ReadingRoomsModel.FK_USER_RELATIONS_FACULTY" FromRole="FACULTY" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="POST">
+          <Key>
+            <PropertyRef Name="POST_ID" />
+          </Key>
+          <Property Name="POST_ID" Type="Int64" Nullable="false" />
+          <Property Name="USR_ID" Type="Int64" Nullable="false" />
+          <Property Name="THREAD_ID" Type="Int64" Nullable="false" />
+          <Property Name="POST_CON" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="POST_LIKES" Type="Int64" />
+          <Property Name="POST_DISLIKES" Type="Int64" />
+          <Property Name="POST_CRON" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="THREAD" Relationship="ReadingRoomsModel.FK_POST_RELATIONS_THREAD" FromRole="POST" ToRole="THREAD" />
+          <NavigationProperty Name="USER" Relationship="ReadingRoomsModel.FK_POST_RELATIONS_USER" FromRole="POST" ToRole="USER" />
+          <NavigationProperty Name="REPORTs" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_POST" FromRole="POST" ToRole="REPORT" />
+        </EntityType>
+        <EntityType Name="READING_ROOM">
+          <Key>
+            <PropertyRef Name="RROOM_ID" />
+          </Key>
+          <Property Name="RROOM_ID" Type="Int64" Nullable="false" />
+          <Property Name="FAC_ID" Type="Int64" />
+          <Property Name="UNI_ID" Type="Int64" />
+          <Property Name="RROOM_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="RROOM_LON" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="RROOM_LAT" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="RROOM_DIM" Type="Int32" Nullable="false" />
+          <Property Name="RROOM_WTF" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RROOM_WTT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RROOM_IDX" Type="Boolean" Nullable="false" />
+          <Property Name="RROOM_IDXF" Type="DateTime" Precision="3" />
+          <Property Name="RROOM_IDXT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FACULTY" Relationship="ReadingRoomsModel.FK_READING__RELATIONS_FACULTY" FromRole="READING_ROOM" ToRole="FACULTY" />
+          <NavigationProperty Name="UNIVERSITY" Relationship="ReadingRoomsModel.FK_READING__RELATIONS_UNIVERSI" FromRole="READING_ROOM" ToRole="UNIVERSITY" />
+          <NavigationProperty Name="SEATs" Relationship="ReadingRoomsModel.FK_SEAT_RELATIONS_READING_" FromRole="READING_ROOM" ToRole="SEAT" />
+        </EntityType>
+        <EntityType Name="REPORT">
+          <Key>
+            <PropertyRef Name="REPO_ID" />
+          </Key>
+          <Property Name="REPO_ID" Type="Int64" Nullable="false" />
+          <Property Name="POST_ID" Type="Int64" />
+          <Property Name="USR_ID" Type="Int64" Nullable="false" />
+          <Property Name="THREAD_ID" Type="Int64" />
+          <Property Name="REPO_REASON" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="REPO_CRON" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REPO_ACCEPT" Type="Boolean" />
+          <NavigationProperty Name="POST" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_POST" FromRole="REPORT" ToRole="POST" />
+          <NavigationProperty Name="THREAD" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_THREAD" FromRole="REPORT" ToRole="THREAD" />
+          <NavigationProperty Name="USER" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_USER" FromRole="REPORT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="Int64" Nullable="false" />
+          <Property Name="USR_ID" Type="Int64" Nullable="false" />
+          <Property Name="RES_ETA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RES_ETD" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="USER" Relationship="ReadingRoomsModel.FK_RESERVAT_RELATIONS_USER" FromRole="RESERVATION" ToRole="USER" />
+          <NavigationProperty Name="SEATs" Relationship="ReadingRoomsModel.RESERVED_SEATS" FromRole="RESERVATION" ToRole="SEAT" />
+        </EntityType>
+        <EntityType Name="SEAT">
+          <Key>
+            <PropertyRef Name="SEAT_ID" />
+          </Key>
+          <Property Name="SEAT_ID" Type="Int64" Nullable="false" />
+          <Property Name="RROOM_ID" Type="Int64" Nullable="false" />
+          <Property Name="SEAT_POSITION" Type="Int32" Nullable="false" />
+          <Property Name="SEAT_LABEL" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="READING_ROOM" Relationship="ReadingRoomsModel.FK_SEAT_RELATIONS_READING_" FromRole="SEAT" ToRole="READING_ROOM" />
+          <NavigationProperty Name="RESERVATIONs" Relationship="ReadingRoomsModel.RESERVED_SEATS" FromRole="SEAT" ToRole="RESERVATION" />
+        </EntityType>
+        <EntityType Name="THREAD">
+          <Key>
+            <PropertyRef Name="THREAD_ID" />
+          </Key>
+          <Property Name="THREAD_ID" Type="Int64" Nullable="false" />
+          <Property Name="BLOG_ID" Type="Int64" Nullable="false" />
+          <Property Name="USR_ID" Type="Int64" Nullable="false" />
+          <Property Name="THREAD_H" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="THREAD_CON" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="THREAD_CRON" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BLOG" Relationship="ReadingRoomsModel.FK_THREAD_RELATIONS_BLOG" FromRole="THREAD" ToRole="BLOG" />
+          <NavigationProperty Name="POSTs" Relationship="ReadingRoomsModel.FK_POST_RELATIONS_THREAD" FromRole="THREAD" ToRole="POST" />
+          <NavigationProperty Name="REPORTs" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_THREAD" FromRole="THREAD" ToRole="REPORT" />
+          <NavigationProperty Name="USER" Relationship="ReadingRoomsModel.FK_THREAD_RELATIONS_USER" FromRole="THREAD" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="UNIVERSITY">
+          <Key>
+            <PropertyRef Name="UNI_ID" />
+          </Key>
+          <Property Name="UNI_ID" Type="Int64" Nullable="false" />
+          <Property Name="UNI_NAME" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="UNI_CITY" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="FACULTies" Relationship="ReadingRoomsModel.FK_FACULTY_RELATIONS_UNIVERSI" FromRole="UNIVERSITY" ToRole="FACULTY" />
+          <NavigationProperty Name="READING_ROOM" Relationship="ReadingRoomsModel.FK_READING__RELATIONS_UNIVERSI" FromRole="UNIVERSITY" ToRole="READING_ROOM" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USR_ID" />
+          </Key>
+          <Property Name="USR_ID" Type="Int64" Nullable="false" />
+          <Property Name="FAC_ID" Type="Int64" />
+          <Property Name="USR_USERNAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_PASS" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_EMAIL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_LNAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_IDX" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="USR_ROLE" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="FACULTY" Relationship="ReadingRoomsModel.FK_USER_RELATIONS_FACULTY" FromRole="USER" ToRole="FACULTY" />
+          <NavigationProperty Name="POSTs" Relationship="ReadingRoomsModel.FK_POST_RELATIONS_USER" FromRole="USER" ToRole="POST" />
+          <NavigationProperty Name="REPORTs" Relationship="ReadingRoomsModel.FK_REPORT_RELATIONS_USER" FromRole="USER" ToRole="REPORT" />
+          <NavigationProperty Name="RESERVATIONs" Relationship="ReadingRoomsModel.FK_RESERVAT_RELATIONS_USER" FromRole="USER" ToRole="RESERVATION" />
+          <NavigationProperty Name="THREADs" Relationship="ReadingRoomsModel.FK_THREAD_RELATIONS_USER" FromRole="USER" ToRole="THREAD" />
+        </EntityType>
+        <Association Name="FK_BLOG_RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.FACULTY" Multiplicity="1" />
+          <End Role="BLOG" Type="ReadingRoomsModel.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THREAD_RELATIONS_BLOG">
+          <End Role="BLOG" Type="ReadingRoomsModel.BLOG" Multiplicity="1" />
+          <End Role="THREAD" Type="ReadingRoomsModel.THREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOG">
+              <PropertyRef Name="BLOG_ID" />
+            </Principal>
+            <Dependent Role="THREAD">
+              <PropertyRef Name="BLOG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACULTY_RELATIONS_UNIVERSI">
+          <End Role="UNIVERSITY" Type="ReadingRoomsModel.UNIVERSITY" Multiplicity="1" />
+          <End Role="FACULTY" Type="ReadingRoomsModel.FACULTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIVERSITY">
+              <PropertyRef Name="UNI_ID" />
+            </Principal>
+            <Dependent Role="FACULTY">
+              <PropertyRef Name="UNI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_READING__RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.FACULTY" Multiplicity="0..1" />
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.READING_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="READING_ROOM">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RELATIONS_FACULTY">
+          <End Role="FACULTY" Type="ReadingRoomsModel.FACULTY" Multiplicity="0..1" />
+          <End Role="USER" Type="ReadingRoomsModel.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POST_RELATIONS_THREAD">
+          <End Role="THREAD" Type="ReadingRoomsModel.THREAD" Multiplicity="1" />
+          <End Role="POST" Type="ReadingRoomsModel.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THREAD">
+              <PropertyRef Name="THREAD_ID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="THREAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POST_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.USER" Multiplicity="1" />
+          <End Role="POST" Type="ReadingRoomsModel.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_POST">
+          <End Role="POST" Type="ReadingRoomsModel.POST" Multiplicity="0..1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POST_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="POST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_READING__RELATIONS_UNIVERSI">
+          <End Role="UNIVERSITY" Type="ReadingRoomsModel.UNIVERSITY" Multiplicity="0..1" />
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.READING_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIVERSITY">
+              <PropertyRef Name="UNI_ID" />
+            </Principal>
+            <Dependent Role="READING_ROOM">
+              <PropertyRef Name="UNI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEAT_RELATIONS_READING_">
+          <End Role="READING_ROOM" Type="ReadingRoomsModel.READING_ROOM" Multiplicity="1" />
+          <End Role="SEAT" Type="ReadingRoomsModel.SEAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READING_ROOM">
+              <PropertyRef Name="RROOM_ID" />
+            </Principal>
+            <Dependent Role="SEAT">
+              <PropertyRef Name="RROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_THREAD">
+          <End Role="THREAD" Type="ReadingRoomsModel.THREAD" Multiplicity="0..1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THREAD">
+              <PropertyRef Name="THREAD_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="THREAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.USER" Multiplicity="1" />
+          <End Role="REPORT" Type="ReadingRoomsModel.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVAT_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.USER" Multiplicity="1" />
+          <End Role="RESERVATION" Type="ReadingRoomsModel.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THREAD_RELATIONS_USER">
+          <End Role="USER" Type="ReadingRoomsModel.USER" Multiplicity="1" />
+          <End Role="THREAD" Type="ReadingRoomsModel.THREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USR_ID" />
+            </Principal>
+            <Dependent Role="THREAD">
+              <PropertyRef Name="USR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RESERVED_SEATS">
+          <End Role="RESERVATION" Type="ReadingRoomsModel.RESERVATION" Multiplicity="*" />
+          <End Role="SEAT" Type="ReadingRoomsModel.SEAT" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReadingRoomsModelStoreContainer" CdmEntityContainer="ReadingRoomsEntities">
+          <EntitySetMapping Name="BLOGs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.BLOG">
+              <MappingFragment StoreEntitySet="BLOG">
+                <ScalarProperty Name="BLOG_ID" ColumnName="BLOG_ID" />
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+                <ScalarProperty Name="BLOG_NAME" ColumnName="BLOG_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACULTies">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.FACULTY">
+              <MappingFragment StoreEntitySet="FACULTY">
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="FAC_NAME" ColumnName="FAC_NAME" />
+                <ScalarProperty Name="FAC_ABBR" ColumnName="FAC_ABBR" />
+                <ScalarProperty Name="FAC_ADDR" ColumnName="FAC_ADDR" />
+                <ScalarProperty Name="FAC_WEB" ColumnName="FAC_WEB" />
+                <ScalarProperty Name="FAC_EMAIL" ColumnName="FAC_EMAIL" />
+                <ScalarProperty Name="FAC_TEL" ColumnName="FAC_TEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSTs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.POST">
+              <MappingFragment StoreEntitySet="POST">
+                <ScalarProperty Name="POST_ID" ColumnName="POST_ID" />
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="THREAD_ID" ColumnName="THREAD_ID" />
+                <ScalarProperty Name="POST_CON" ColumnName="POST_CON" />
+                <ScalarProperty Name="POST_LIKES" ColumnName="POST_LIKES" />
+                <ScalarProperty Name="POST_DISLIKES" ColumnName="POST_DISLIKES" />
+                <ScalarProperty Name="POST_CRON" ColumnName="POST_CRON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="READING_ROOM">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.READING_ROOM">
+              <MappingFragment StoreEntitySet="READING_ROOM">
+                <ScalarProperty Name="RROOM_ID" ColumnName="RROOM_ID" />
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="RROOM_NAME" ColumnName="RROOM_NAME" />
+                <ScalarProperty Name="RROOM_LON" ColumnName="RROOM_LON" />
+                <ScalarProperty Name="RROOM_LAT" ColumnName="RROOM_LAT" />
+                <ScalarProperty Name="RROOM_DIM" ColumnName="RROOM_DIM" />
+                <ScalarProperty Name="RROOM_WTF" ColumnName="RROOM_WTF" />
+                <ScalarProperty Name="RROOM_WTT" ColumnName="RROOM_WTT" />
+                <ScalarProperty Name="RROOM_IDX" ColumnName="RROOM_IDX" />
+                <ScalarProperty Name="RROOM_IDXF" ColumnName="RROOM_IDXF" />
+                <ScalarProperty Name="RROOM_IDXT" ColumnName="RROOM_IDXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.REPORT">
+              <MappingFragment StoreEntitySet="REPORT">
+                <ScalarProperty Name="REPO_ID" ColumnName="REPO_ID" />
+                <ScalarProperty Name="POST_ID" ColumnName="POST_ID" />
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="THREAD_ID" ColumnName="THREAD_ID" />
+                <ScalarProperty Name="REPO_REASON" ColumnName="REPO_REASON" />
+                <ScalarProperty Name="REPO_CRON" ColumnName="REPO_CRON" />
+                <ScalarProperty Name="REPO_ACCEPT" ColumnName="REPO_ACCEPT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATIONs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.RESERVATION">
+              <MappingFragment StoreEntitySet="RESERVATION">
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="RES_ETA" ColumnName="RES_ETA" />
+                <ScalarProperty Name="RES_ETD" ColumnName="RES_ETD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEATs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.SEAT">
+              <MappingFragment StoreEntitySet="SEAT">
+                <ScalarProperty Name="SEAT_ID" ColumnName="SEAT_ID" />
+                <ScalarProperty Name="RROOM_ID" ColumnName="RROOM_ID" />
+                <ScalarProperty Name="SEAT_POSITION" ColumnName="SEAT_POSITION" />
+                <ScalarProperty Name="SEAT_LABEL" ColumnName="SEAT_LABEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THREADs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.THREAD">
+              <MappingFragment StoreEntitySet="THREAD">
+                <ScalarProperty Name="THREAD_ID" ColumnName="THREAD_ID" />
+                <ScalarProperty Name="BLOG_ID" ColumnName="BLOG_ID" />
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="THREAD_H" ColumnName="THREAD_H" />
+                <ScalarProperty Name="THREAD_CON" ColumnName="THREAD_CON" />
+                <ScalarProperty Name="THREAD_CRON" ColumnName="THREAD_CRON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNIVERSITies">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.UNIVERSITY">
+              <MappingFragment StoreEntitySet="UNIVERSITY">
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="UNI_NAME" ColumnName="UNI_NAME" />
+                <ScalarProperty Name="UNI_CITY" ColumnName="UNI_CITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="ReadingRoomsModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+                <ScalarProperty Name="USR_USERNAME" ColumnName="USR_USERNAME" />
+                <ScalarProperty Name="USR_PASS" ColumnName="USR_PASS" />
+                <ScalarProperty Name="USR_EMAIL" ColumnName="USR_EMAIL" />
+                <ScalarProperty Name="USR_NAME" ColumnName="USR_NAME" />
+                <ScalarProperty Name="USR_LNAME" ColumnName="USR_LNAME" />
+                <ScalarProperty Name="USR_IDX" ColumnName="USR_IDX" />
+                <ScalarProperty Name="USR_ROLE" ColumnName="USR_ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RESERVED_SEATS" TypeName="ReadingRoomsModel.RESERVED_SEATS" StoreEntitySet="RESERVED_SEATS">
+            <EndProperty Name="RESERVATION">
+              <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+            </EndProperty>
+            <EndProperty Name="SEAT">
+              <ScalarProperty Name="SEAT_ID" ColumnName="SEAT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

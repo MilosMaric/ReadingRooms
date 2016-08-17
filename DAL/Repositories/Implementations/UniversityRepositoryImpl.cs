@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Helpers;
 using DAL.Repositories.Interfaces;
 
 namespace DAL.Repositories.Implementations
@@ -16,14 +17,14 @@ namespace DAL.Repositories.Implementations
         {
             UNIVERSITY insertedUni = null;
 
-            if (entity != null)
+            if (CheckHelper.IsFilled(entity))
             {                
                 using (ctx = new ReadingRoomsEntities())
                 {
                     entity.UNI_ID = 1;
 
                     UNIVERSITY maxUni = ctx.UNIVERSITies.OrderByDescending(u => u.UNI_ID).FirstOrDefault();
-                    if (maxUni != null) 
+                    if (CheckHelper.IsFilled(maxUni)) 
                     {
                         entity.UNI_ID = maxUni.UNI_ID + 1;
                     }
@@ -55,7 +56,7 @@ namespace DAL.Repositories.Implementations
             using (ctx = new ReadingRoomsEntities())
             {
                 UNIVERSITY entity = ctx.UNIVERSITies.Where(u => u.UNI_ID == id).FirstOrDefault();
-                if (entity != null)
+                if (CheckHelper.IsFilled(entity))
                 {
                     ctx.UNIVERSITies.Remove(entity);
                     ctx.SaveChanges();

@@ -16,6 +16,8 @@ namespace API.Services.Implementations
     public class FacultyServiceImpl : IFacultyService
     {
         private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
+        private IUniversityRepository uniRepository = new UniversityRepositoryImpl();
+
         private FacultyTransformer transformer = new FacultyTransformer();
 
         public FacultyDTO Add(FacultyDTO faculty)
@@ -34,6 +36,7 @@ namespace API.Services.Implementations
 
                     if (CheckHelper.IsFilled(addedFac))
                     {
+                        addedFac.UNIVERSITY = uniRepository.GetById(faculty.UniversityId);
                         retVal = transformer.TransformToDTO(addedFac);
                     }
                 }

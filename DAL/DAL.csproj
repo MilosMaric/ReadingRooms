@@ -50,8 +50,10 @@
     <Compile Include="BLOG.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\BlogDTO.cs" />
     <Compile Include="DTOs\FacultyDTO.cs" />
     <Compile Include="DTOs\ReadingRoomDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="FACULTY.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>
@@ -82,7 +84,9 @@
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\Implementations\FacultyRepositoryImpl.cs" />
     <Compile Include="Repositories\Implementations\UniversityRepositoryImpl.cs" />
+    <Compile Include="Repositories\Interfaces\IFacultyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUniversityRepository.cs" />
     <Compile Include="RESERVATION.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
@@ -93,8 +97,12 @@
     <Compile Include="THREAD.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Transformers\Implementations\BlogTransformer.cs" />
+    <Compile Include="Transformers\Implementations\FacultyTransformer.cs" />
+    <Compile Include="Transformers\Implementations\UserTransformer.cs" />
     <Compile Include="Transformers\ITransformer.cs" />
-    <Compile Include="Transformers\UniversityTransformer.cs" />
+    <Compile Include="Transformers\Implementations\ReadingRoomTransformer.cs" />
+    <Compile Include="Transformers\Implementations\UniversityTransformer.cs" />
     <Compile Include="UNIVERSITY.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>

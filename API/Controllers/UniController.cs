@@ -34,13 +34,13 @@ namespace API.Controllers
         [GET("api/uni/{uniId}/faculties")]
         public List<FacultyDTO> GetFaculties(int uniId)
         {
-            return null;
+            return uniService.GetFaculties(uniId);
         }
 
-        [GET("api/uni/{uniId}/rroom")]
-        public List<ReadingRoomDTO> GetUniReadingRoom(int uniId)
+        [GET("api/uni/{uniId}/rrooms")]
+        public List<ReadingRoomDTO> GetUniReadingRooms(int uniId)
         {
-            return null;
+            return uniService.GetReadingRooms(uniId);
         }
 
         // POST api/<controller>

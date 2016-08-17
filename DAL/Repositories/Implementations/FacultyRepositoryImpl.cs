@@ -21,10 +21,12 @@ namespace DAL.Repositories.Implementations
             {
                 using (ctx = new ReadingRoomsEntities())
                 {
+                    entity.FAC_ID = 1;
+
                     FACULTY maxFaculty = ctx.FACULTies.OrderByDescending(f => f.FAC_ID).FirstOrDefault();
                     if (CheckHelper.IsFilled(maxFaculty))
                     {
-                        entity.UNI_ID = maxFaculty.FAC_ID + 1;
+                        entity.FAC_ID = maxFaculty.FAC_ID + 1;
                     }
 
                     insertedFaculty = ctx.FACULTies.Add(entity);

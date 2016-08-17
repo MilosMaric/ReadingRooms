@@ -51,10 +51,9 @@ namespace API.Controllers
         }
 
         // PUT api/<controller>/5
-        public UniversityDTO Put(int id, [FromBody]UniversityDTO uniDTO)
+        public void Put(int id, [FromBody]UniversityDTO uniDTO)
         {
-            UniversityDTO retVal = uniService.Update(id, uniDTO);
-            return retVal;
+            uniService.Update(id, uniDTO);            
         }
 
         // DELETE api/<controller>/5

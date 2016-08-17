@@ -15,6 +15,8 @@ namespace API.Services.Implementations
     public class UniversityServiceImpl : IUniversityService
     {
         private IUniversityRepository uniRepository = new UniversityRepositoryImpl();
+        private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
+
         private UniversityTransformer transformer = new UniversityTransformer();
 
         public UniversityDTO Add(UniversityDTO uni)
@@ -120,21 +122,19 @@ namespace API.Services.Implementations
 
             return retVal;
         }
-
-
-
+        
         public List<FacultyDTO> GetFaculties(long uniId)
         {
-            UNIVERSITY uni = null;
+            List<FACULTY> entries = null;
             List<FacultyDTO> retVal = null;
             FacultyTransformer facultyTransformer;
 
-            uni = uniRepository.GetById(uniId);
-            facultyTransformer = new FacultyTransformer();
+            entries = facultyRepository.GetForUniversity(uniId);
 
-            if (CheckHelper.IsFilled(uni) && CheckHelper.IsFilled(uni.FACULTies))
+            if (CheckHelper.IsFilled(entries))
             {
-                retVal = facultyTransformer.TransformToDTO(uni.FACULTies.ToList());
+                facultyTransformer = new FacultyTransformer();
+                retVal = facultyTransformer.TransformToDTO(entries);
             }
 
             return retVal;
@@ -142,16 +142,17 @@ namespace API.Services.Implementations
 
         public List<ReadingRoomDTO> GetReadingRooms(long uniId)
         {
-            UNIVERSITY uni = null;
+            List<READING_ROOM> entries = null;
             List<ReadingRoomDTO> retVal = null;
             ReadingRoomTransformer rroomTransformer;
 
-            uni = uniRepository.GetById(uniId);
+            // TODO : Implementirati metodu za dobavljanje citaonica koje pripadaju univerzitetu sa prosledjenim ID. 
+            //entries = uniRepository.GetReadingRooms(uniId);
             rroomTransformer = new ReadingRoomTransformer();
 
-            if(CheckHelper.IsFilled(uni) && CheckHelper.IsFilled(uni.READING_ROOM)) 
+            if(CheckHelper.IsFilled(entries)) 
             {
-                retVal = rroomTransformer.TransformToDTO(uni.READING_ROOM.ToList());
+                retVal = rroomTransformer.TransformToDTO(entries);
             }
 
             return retVal;

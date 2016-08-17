@@ -132,7 +132,8 @@ namespace API.Services.Implementations
             List<ReadingRoomDTO> retVal = null;
             ReadingRoomTransformer rroomTransformer;
 
-            faculty = facultyRepository.GetById(facId);
+            // TODO : Implementirati metodu za dobavljanje citaonica koje pripadaju fakultetu sa prosledjenim ID. 
+            //faculty = facultyRepository.GetById(facId);
             rroomTransformer = new ReadingRoomTransformer();
 
             if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.READING_ROOM))
@@ -149,7 +150,8 @@ namespace API.Services.Implementations
             List<UserDTO> retVal = null;
             UserTransformer userTransformer;
 
-            faculty = facultyRepository.GetById(facId);
+            // TODO : Implementirati metodu za dobavljanje korisnika (studenata) koji pripadaju fakultetu sa prosledjenim ID. 
+            //faculty = facultyRepository.GetById(facId);
             userTransformer = new UserTransformer();
 
             if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.USERs))
@@ -166,7 +168,8 @@ namespace API.Services.Implementations
             List<BlogDTO> retVal = null;
             BlogTransformer blogTransformer;
 
-            faculty = facultyRepository.GetById(facId);
+            // TODO : Implementirati metodu za dobavljanje blogova koji pripadaju fakultetu sa prosledjenim ID. 
+            //faculty = facultyRepository.GetById(facId);
             blogTransformer = new BlogTransformer();
 
             if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.BLOGs))

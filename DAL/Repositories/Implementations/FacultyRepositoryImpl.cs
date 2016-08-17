@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Helpers;
 using DAL.Repositories.Interfaces;
+using System.Data.Entity;
 
 namespace DAL.Repositories.Implementations
 {
@@ -72,6 +73,7 @@ namespace DAL.Repositories.Implementations
             {
                 faculty = ctx.FACULTies
                     .Where(f => f.FAC_ID == id)
+                    .Include(f => f.UNIVERSITY)
                     .FirstOrDefault();
             }
 
@@ -84,7 +86,27 @@ namespace DAL.Repositories.Implementations
 
             using (ctx = new ReadingRoomsEntities())
             {
-                faculties = ctx.FACULTies.ToList();
+                faculties = ctx.FACULTies
+                    .Include(f => f.UNIVERSITY)
+                    .ToList();
+            }
+
+            return faculties;
+        }
+
+        public List<FACULTY> GetForUniversity(long uniId)
+        {
+            List<FACULTY> faculties = null;
+
+            using (ctx = new ReadingRoomsEntities())
+            {
+                var collection = ctx.FACULTies
+                    .Where(f => f.UNI_ID == uniId)
+                    .Include(f => f.UNIVERSITY);
+                if (CheckHelper.IsFilled(collection))
+                {
+                    faculties = collection.ToList();
+                }
             }
 
             return faculties;

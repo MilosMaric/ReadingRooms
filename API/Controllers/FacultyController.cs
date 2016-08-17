@@ -53,10 +53,9 @@ namespace API.Controllers
         }
 
         // PUT api/<controller>/5
-        public FacultyDTO Put(int id, [FromBody] FacultyDTO facDTO)
+        public void Put(int id, [FromBody] FacultyDTO facDTO)
         {
-            FacultyDTO retVal = facultyService.Update(id, facDTO);
-            return retVal;
+            facultyService.Update(id, facDTO);
         }
 
         // DELETE api/<controller>/5

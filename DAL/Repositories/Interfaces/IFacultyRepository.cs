@@ -8,5 +8,6 @@ namespace DAL.Repositories.Interfaces
 {
     public interface IFacultyRepository : IGenericRepository<FACULTY>
     {
+        List<FACULTY> GetForUniversity(long uniId);
     }
 }

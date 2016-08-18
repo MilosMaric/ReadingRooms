@@ -52,7 +52,13 @@
     </Compile>
     <Compile Include="DTOs\BlogDTO.cs" />
     <Compile Include="DTOs\FacultyDTO.cs" />
+    <Compile Include="DTOs\JWTDTO.cs" />
+    <Compile Include="DTOs\LoginDTO.cs" />
+    <Compile Include="DTOs\PostDTO.cs" />
     <Compile Include="DTOs\ReadingRoomDTO.cs" />
+    <Compile Include="DTOs\ReportDTO.cs" />
+    <Compile Include="DTOs\ReservationDTO.cs" />
+    <Compile Include="DTOs\ThreadDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="FACULTY.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
@@ -86,8 +92,10 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\Implementations\FacultyRepositoryImpl.cs" />
     <Compile Include="Repositories\Implementations\UniversityRepositoryImpl.cs" />
+    <Compile Include="Repositories\Implementations\UserRepositoryImpl.cs" />
     <Compile Include="Repositories\Interfaces\IFacultyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUniversityRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="RESERVATION.cs">
       <DependentUpon>ReadingRoomsModel.tt</DependentUpon>
     </Compile>

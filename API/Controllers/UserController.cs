@@ -37,7 +37,6 @@ namespace API.Controllers
         }
         
         // PUT api/<controller>/5
-        [JWTAuthorize(ForbiddenRole = AppConstants.ADMINISTRATOR)]
         public void Put(int id, [FromBody]string value)
         {
             var a = "asd";

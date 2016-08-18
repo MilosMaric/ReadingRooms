@@ -12,7 +12,7 @@ using AttributeRouting.Web.Http;
 using DAL.DTOs;
 
 namespace API.Controllers
-{
+{    
     public class FacultyController : ApiController
     {
         private IFacultyService facultyService = new FacultyServiceImpl();
@@ -42,12 +42,14 @@ namespace API.Controllers
         }
 
         [GET("api/faculty/{facId}/students")]
+        [JWTAuthorize(ForbiddenRole = AppConstants.STUDENT)]
         public List<UserDTO> GetFacStudents(int facId)
         {
             return facultyService.GetStudents(facId);
         }
 
         // POST api/<controller>
+        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
         public FacultyDTO Post([FromBody] FacultyDTO facDTO)
         {
             FacultyDTO retVal = facultyService.Add(facDTO);
@@ -55,12 +57,14 @@ namespace API.Controllers
         }
 
         // PUT api/<controller>/5
+        [JWTAuthorize(ForbiddenRole = AppConstants.STUDENT)]
         public void Put(int id, [FromBody] FacultyDTO facDTO)
         {
             facultyService.Update(id, facDTO);
         }
 
         // DELETE api/<controller>/5
+        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
         public void Delete(int id)
         {
             facultyService.Delete(id);

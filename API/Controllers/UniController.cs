@@ -12,6 +12,8 @@ using AttributeRouting;
 using AttributeRouting.Web.Http;
 using API.Services.Implementations;
 using API.Services.Interfaces;
+using API.Attributes;
+using API.Constants;
 
 namespace API.Controllers
 {
@@ -44,6 +46,7 @@ namespace API.Controllers
         }
 
         // POST api/<controller>
+        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
         public UniversityDTO Post([FromBody] UniversityDTO uniDTO)
         {
             UniversityDTO retVal = uniService.Add(uniDTO);
@@ -51,12 +54,14 @@ namespace API.Controllers
         }
 
         // PUT api/<controller>/5
+        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
         public void Put(int id, [FromBody]UniversityDTO uniDTO)
         {
             uniService.Update(id, uniDTO);            
         }
 
         // DELETE api/<controller>/5
+        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
         public void Delete(int id)
         {            
             uniService.Delete(id);

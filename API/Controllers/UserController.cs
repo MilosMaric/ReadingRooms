@@ -18,35 +18,41 @@ namespace API.Controllers
         private IUserService userService = new UserServiceImpl(); 
 
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public List<UserDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return userService.GetAll();
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public UserDTO Get(int id)
         {
-            return "value";
+            return userService.GetById(id);
+        }
+
+        [GET("api/user/{userId}/reservations")]
+        public List<ReservationDTO> GetUserReservations(int userId)
+        {
+            return userService.GetReservations(userId);
         }
         
         // POST api/<controller>
-        [JWTAuthorize(Role = AppConstants.ADMINISTRATOR)]
-        public void Post([FromBody]UserDTO dto)
+        public UserDTO Post([FromBody]UserDTO dto)
         {
-            var a = "asd";
+            UserDTO retVal = userService.Add(dto);
+            return retVal;
         }
         
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]UserDTO userDTO)
         {
-            var a = "asd";
+            userService.Update(id, userDTO);
         }
 
         // DELETE api/<controller>/5
         [JWTAuthorize(ForbiddenRole = AppConstants.STUDENT)]
         public void Delete(int id)
         {
-            var a = "asd";
+            userService.Delete(id);
         }
     }
 }

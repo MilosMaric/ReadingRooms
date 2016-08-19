@@ -17,6 +17,7 @@ namespace API.Services.Implementations
     {
         private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
         private IUniversityRepository uniRepository = new UniversityRepositoryImpl();
+        private IUserRepository userRepository = new UserRepositoryImpl();
 
         private FacultyTransformer transformer = new FacultyTransformer();
 
@@ -145,18 +146,18 @@ namespace API.Services.Implementations
         }
 
         public List<UserDTO> GetStudents(long facId)
-        {
-            FACULTY faculty = null;
+        {            
             List<UserDTO> retVal = null;
             UserTransformer userTransformer;
+            List<USER> students;
 
-            // TODO : Implementirati metodu za dobavljanje korisnika (studenata) koji pripadaju fakultetu sa prosledjenim ID. 
-            //faculty = facultyRepository.GetById(facId);
+
+            students = userRepository.GetForFaculty(facId);
             userTransformer = new UserTransformer();
 
-            if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.USERs))
+            if (CheckHelper.IsFilled(students))
             {
-                retVal = userTransformer.TransformToDTO(faculty.USERs.ToList());
+                retVal = userTransformer.TransformToDTO(students);
             }
 
             return retVal;

@@ -9,40 +9,128 @@ using DAL.DTOs;
 using DAL.Helpers;
 using DAL.Repositories.Implementations;
 using DAL.Repositories.Interfaces;
+using DAL.Transformers.Implementations;
 
 namespace API.Services.Implementations
 {
     public class UserServiceImpl : IUserService
     {
         private IUserRepository userRepository = new UserRepositoryImpl();
+        private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
+
+        private UserTransformer transformer = new UserTransformer();
 
         public UserDTO Add(UserDTO user)
         {
-            return null;
+            USER userToAdd, addedUser;
+            UserDTO retVal;
+
+            retVal = null;
+
+            if (CheckHelper.IsFilled(user))
+            {
+                try
+                {
+                    userToAdd = transformer.TransformFromDTO(-1, user);
+                    addedUser = userRepository.Add(userToAdd);
+
+                    if (CheckHelper.IsFilled(addedUser))
+                    {
+                        addedUser.FACULTY = facultyRepository.GetById(user.FacultyId);
+                        retVal = transformer.TransformToDTO(addedUser);
+                    }
+                }
+                catch (Exception e) {
+                }
+            }
+
+            return retVal;
         }
 
         public UserDTO Update(long id, UserDTO user)
         {
-            return null;
+            USER userToUpdate, updatedUser, oldUser;
+            UserDTO retVal;
+
+            retVal = null;
+            oldUser = userRepository.GetById(id);
+
+            if (CheckHelper.IsFilled(user) && CheckHelper.IsFilled(oldUser))
+            {
+                try
+                {
+                    userToUpdate = transformer.TransformFromDTO(id, user);
+                    userToUpdate.RESERVATIONs = oldUser.RESERVATIONs;
+                    userToUpdate.POSTs = oldUser.POSTs;
+                    userToUpdate.THREADs = oldUser.THREADs;
+                    userToUpdate.REPORTs = oldUser.REPORTs;
+
+                    updatedUser = userRepository.Update(userToUpdate);
+
+                    if (CheckHelper.IsFilled(updatedUser))
+                    {
+                        retVal = transformer.TransformToDTO(updatedUser);
+                    }
+                }
+                catch (Exception) { }
+            }
+
+            return retVal;
         }
 
         public bool Delete(long id)
         {
-            return true;
+            bool isDeleted = false;
+
+            try
+            {
+                userRepository.Delete(id);
+                isDeleted = true;
+            }
+            catch (Exception) { }
+
+            return isDeleted;
         }
 
         public List<UserDTO> GetAll()
         {
-            return null;
+            List<UserDTO> retVal = null;
+            List<USER> entries;
+
+            try
+            {
+                entries = userRepository.GetAll();
+                if (CheckHelper.IsFilled(entries))
+                {
+                    retVal = transformer.TransformToDTO(entries);
+                }
+            }
+            catch (Exception) { }
+
+            return retVal;
         }
 
         public UserDTO GetById(long id)
         {
-            return null;
+            USER entry;
+            UserDTO retVal = null;
+
+            try
+            {
+                entry = userRepository.GetById(id);
+                if (CheckHelper.IsFilled(entry))
+                {
+                    retVal = transformer.TransformToDTO(entry);
+                }
+            }
+            catch (Exception) { }
+
+            return retVal;
         }
 
         public List<ReservationDTO> GetReservations(long userId)
         {
+            //TODO : U repozitorijum rezervacija staviti metodu koja dobavlja rezervacije odredjenog korisnika.
             return null;
         }
 

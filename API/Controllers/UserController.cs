@@ -15,7 +15,8 @@ namespace API.Controllers
 {
     public class UserController : ApiController
     {
-        private IUserService userService = new UserServiceImpl(); 
+        private IUserService userService = new UserServiceImpl();
+        private IReservationService resService = new ReservationServiceImpl();
 
         // GET api/<controller>
         public List<UserDTO> Get()
@@ -32,7 +33,15 @@ namespace API.Controllers
         [GET("api/user/{userId}/reservations")]
         public List<ReservationDTO> GetUserReservations(int userId)
         {
-            return userService.GetReservations(userId);
+            UserDTO user = userService.GetById(userId);
+            List<ReservationDTO> retVal = null;
+
+            if (user.Role.Equals(AppConstants.STUDENT))
+            { 
+                retVal = resService.GetStudentsReservations(userId);
+            }
+
+            return retVal;
         }
         
         // POST api/<controller>

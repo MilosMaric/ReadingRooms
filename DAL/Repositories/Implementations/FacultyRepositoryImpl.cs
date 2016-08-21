@@ -71,10 +71,13 @@ namespace DAL.Repositories.Implementations
 
             using (ctx = new ReadingRoomsEntities())
             {
-                faculty = ctx.FACULTies
-                    .Where(f => f.FAC_ID == id)
-                    .Include(f => f.UNIVERSITY)
-                    .FirstOrDefault();
+                if (id > 0)
+                {
+                    faculty = ctx.FACULTies
+                        .Where(f => f.FAC_ID == id)
+                        .Include(f => f.UNIVERSITY)
+                        .FirstOrDefault();
+                }
             }
 
             return faculty;
@@ -87,6 +90,7 @@ namespace DAL.Repositories.Implementations
             using (ctx = new ReadingRoomsEntities())
             {
                 faculties = ctx.FACULTies
+                    .Where(f => f.FAC_ID > 0)
                     .Include(f => f.UNIVERSITY)
                     .ToList();
             }

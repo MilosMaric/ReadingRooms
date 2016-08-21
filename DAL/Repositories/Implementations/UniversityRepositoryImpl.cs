@@ -70,9 +70,12 @@ namespace DAL.Repositories.Implementations
 
             using(ctx = new ReadingRoomsEntities())
             {
-                uni = ctx.UNIVERSITies
-                    .Where(u => u.UNI_ID == id)
-                    .FirstOrDefault();
+                if (id > 0)
+                {
+                    uni = ctx.UNIVERSITies
+                        .Where(u => u.UNI_ID == id)
+                        .FirstOrDefault();
+                }
             }
 
             return uni;
@@ -84,7 +87,9 @@ namespace DAL.Repositories.Implementations
 
             using (ctx = new ReadingRoomsEntities())
             {
-                unis = ctx.UNIVERSITies.ToList();
+                unis = ctx.UNIVERSITies
+                    .Where(u => u.UNI_ID > 0)
+                    .ToList();
             }
 
             return unis;

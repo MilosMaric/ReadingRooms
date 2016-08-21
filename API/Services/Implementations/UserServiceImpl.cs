@@ -128,12 +128,6 @@ namespace API.Services.Implementations
             return retVal;
         }
 
-        public List<ReservationDTO> GetReservations(long userId)
-        {
-            //TODO : U repozitorijum rezervacija staviti metodu koja dobavlja rezervacije odredjenog korisnika.
-            return null;
-        }
-
         public List<PostDTO> GetPosts(long userId)
         {
             return null;

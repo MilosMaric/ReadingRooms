@@ -14,8 +14,7 @@ namespace API.Services.Interfaces
         Boolean Delete(long id);
         List<UserDTO> GetAll();
         UserDTO GetById(long id);
-
-        List<ReservationDTO> GetReservations(long userId);
+                
         List<PostDTO> GetPosts(long userId);           
         List<ThreadDTO> GetThreads(long userId);
         List<ReportDTO> GetReports(long userId);

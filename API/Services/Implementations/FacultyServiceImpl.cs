@@ -18,6 +18,7 @@ namespace API.Services.Implementations
         private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
         private IUniversityRepository uniRepository = new UniversityRepositoryImpl();
         private IUserRepository userRepository = new UserRepositoryImpl();
+        private IReadingRoomRepository rroomRepository = new ReadingRoomRepositoryImpl();
 
         private FacultyTransformer transformer = new FacultyTransformer();
 
@@ -132,14 +133,14 @@ namespace API.Services.Implementations
             FACULTY faculty = null;
             List<ReadingRoomDTO> retVal = null;
             ReadingRoomTransformer rroomTransformer;
+            List<READING_ROOM> rrooms;
 
-            // TODO : Implementirati metodu za dobavljanje citaonica koje pripadaju fakultetu sa prosledjenim ID. 
-            //faculty = facultyRepository.GetById(facId);
+            rrooms = rroomRepository.GetRRoomsForFaculty(facId);
             rroomTransformer = new ReadingRoomTransformer();
 
             if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.READING_ROOM))
             {
-                retVal = rroomTransformer.TransformToDTO(faculty.READING_ROOM.ToList());
+                retVal = rroomTransformer.TransformToDTO(rrooms);
             }
 
             return retVal;

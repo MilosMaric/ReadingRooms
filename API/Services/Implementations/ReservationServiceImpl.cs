@@ -14,7 +14,7 @@ namespace API.Services.Implementations
 {
     public class ReservationServiceImpl : IReservationService
     {
-        private IReservationRepository reservationRepository = new ReservationRepositoryImpl()
+        private IReservationRepository reservationRepository = new ReservationRepositoryImpl();
         private ISeatRepository seatRepository = new SeatRepositoryImpl();
         private IUserRepository userRepository = new UserRepositoryImpl();
 
@@ -35,13 +35,7 @@ namespace API.Services.Implementations
                 {
                     resToAdd = transformer.TransformFromDTO(-1, res);
                     addedRes = reservationRepository.Add(resToAdd);
-
-                    foreach (SeatDTO seatDTO in res.Seats)
-	                {
-                        SEAT seat = seatTransformer.TransformFromDTO(-1, seatDTO);
-		                seatRepository.Add(seat);
-	                }
-
+                    
                     if (CheckHelper.IsFilled(addedRes))
                     {
                         retVal = FinalizeDTOTransformation(transformer.TransformToDTO(addedRes));
@@ -70,12 +64,6 @@ namespace API.Services.Implementations
                     resToUpdate.SEATs = oldRes.SEATs;
 
                     updatedRes = reservationRepository.Update(resToUpdate);
-
-                    foreach (SeatDTO seatDTO in res.Seats)
-	                {
-                        SEAT seat = seatTransformer.TransformFromDTO(-1, seatDTO);
-		                seatRepository.Update(seat);
-	                }
 
                     if (CheckHelper.IsFilled(updatedRes))
                     {

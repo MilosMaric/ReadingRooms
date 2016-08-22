@@ -146,7 +146,6 @@ namespace API.Services.Implementations
             List<ReadingRoomDTO> retVal = null;
             ReadingRoomTransformer rroomTransformer;
 
-            // TODO : Implementirati metodu za dobavljanje citaonica koje pripadaju univerzitetu sa prosledjenim ID. 
             //entries = uniRepository.GetReadingRooms(uniId);
             rroomTransformer = new ReadingRoomTransformer();
 

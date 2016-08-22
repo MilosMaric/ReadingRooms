@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories.Interfaces
 {
-    public interface ISeatRepository : IGenericRepository<SEAT>
+    public interface IReadingRoomRepository : IGenericRepository<READING_ROOM>
     {
-        bool IsFree(long id, DateTime ETA, DateTime ETD);
-        List<SEAT> GetForReadingRoom(long rroomId);
+        List<READING_ROOM> GetRRoomsForFaculty(long facId);
     }
 }

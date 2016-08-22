@@ -58,6 +58,7 @@
     <Compile Include="DTOs\ReadingRoomDTO.cs" />
     <Compile Include="DTOs\ReportDTO.cs" />
     <Compile Include="DTOs\ReservationDTO.cs" />
+    <Compile Include="DTOs\SeatDTO.cs" />
     <Compile Include="DTOs\ThreadDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="FACULTY.cs">
@@ -91,9 +92,15 @@
     </Compile>
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\Implementations\FacultyRepositoryImpl.cs" />
+    <Compile Include="Repositories\Implementations\ReadingRoomRepositoryImpl.cs" />
+    <Compile Include="Repositories\Implementations\ReservationRepositoryImpl.cs" />
+    <Compile Include="Repositories\Implementations\SeatRepositoryImpl.cs" />
     <Compile Include="Repositories\Implementations\UniversityRepositoryImpl.cs" />
     <Compile Include="Repositories\Implementations\UserRepositoryImpl.cs" />
     <Compile Include="Repositories\Interfaces\IFacultyRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IReadingRoomRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IReservationRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ISeatRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUniversityRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="RESERVATION.cs">
@@ -107,6 +114,8 @@
     </Compile>
     <Compile Include="Transformers\Implementations\BlogTransformer.cs" />
     <Compile Include="Transformers\Implementations\FacultyTransformer.cs" />
+    <Compile Include="Transformers\Implementations\ReservationTransformer.cs" />
+    <Compile Include="Transformers\Implementations\SeatTransformer.cs" />
     <Compile Include="Transformers\Implementations\UserTransformer.cs" />
     <Compile Include="Transformers\ITransformer.cs" />
     <Compile Include="Transformers\Implementations\ReadingRoomTransformer.cs" />

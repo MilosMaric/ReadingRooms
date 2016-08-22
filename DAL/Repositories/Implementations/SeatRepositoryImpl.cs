@@ -106,13 +106,28 @@ namespace DAL.Repositories.Implementations
             {
                 using (ctx = new ReadingRoomsEntities())
                 {
-                    isFree = GetById(id).RESERVATIONs
+                    isFree = !GetById(id).RESERVATIONs
                         .Any(r => (r.RES_ETA < ETA && r.RES_ETD > ETA) || 
                             (r.RES_ETA < ETD && r.RES_ETD > ETD));
                 }
             }
 
             return isFree;
+        }
+
+
+        public List<SEAT> GetForReadingRoom(long rroomId)
+        {
+            List<SEAT> seats = null;
+
+            using (ctx = new ReadingRoomsEntities())
+            {
+                seats = ctx.SEATs
+                    .Where(s => s.RROOM_ID == rroomId)
+                    .ToList();
+            }
+
+            return seats;
         }
     }
 }

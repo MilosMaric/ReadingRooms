@@ -10,6 +10,7 @@ using DAL.Helpers;
 using DAL.Repositories.Implementations;
 using DAL.Repositories.Interfaces;
 using DAL.Transformers.Implementations;
+using Newtonsoft.Json;
 
 namespace API.Services.Implementations
 {
@@ -186,6 +187,23 @@ namespace API.Services.Implementations
             }
 
             return isAuthorized;
+        }
+
+
+        public UserDTO GetLoggedUser(string jwt)
+        {
+            UserDTO retVal;
+            USER user;
+            string payload;
+            Dictionary<string, object>  values;
+            long id;
+
+            payload = JWT.JsonWebToken.Decode(jwt, AppConstants.JWT_SECRET_KEY);
+            values = JsonConvert.DeserializeObject<Dictionary<string, object>>(payload);
+            id = Convert.ToInt64(values["Id"]);
+            retVal = GetById(id);            
+
+            return retVal;
         }
     }
 }

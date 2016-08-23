@@ -20,6 +20,7 @@ namespace API.Services.Interfaces
         List<ReportDTO> GetReports(long userId);
 
         JWTDTO GetJWT(LoginDTO credentials);
-        bool isAuthorized(long id, string role, string forbiddenRole); 
+        bool isAuthorized(long id, string role, string forbiddenRole);
+        UserDTO GetLoggedUser(string jwt);
     }
 }

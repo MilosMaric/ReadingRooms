@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+.centered{
+	text-align : center;
+	vertical-align:middle
+}
+
+.table{
+	background-color: white;
+	font-size: 14px;
+}
+
+.bg{
+	background: url(images/bg2.jpg) no-repeat center center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	color:white;
+	overflow-x: overlay;
+	font-family: Verdana;
+}
+
+.myOverflow {
+	overflow-x: overlay
+}
+
+html,body{
+  height:100vh;
+  width:100vw;
+  margin: 0;
+  padding: 0;
+}
+
+div, h{
+	color: #337ab7;
+}
+
+.currentRow{
+	height: 30pt;
+}

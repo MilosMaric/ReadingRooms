@@ -48,12 +48,12 @@
         <!-- Staff -->
         <a href="#/uni" class="btn btn-primary" ng-if="user && user.Role == 'Administrator'">
             <span class="glyphicon glyphicon-education" ></span><b> Univerziteti</b></a>
+        <a href="#/users" class="btn btn-primary" ng-if="user && user.Role !== 'Student'">
+            <span class="glyphicon glyphicon-user" ></span><b>
+                <span ng-if="user && user.Role == 'Manager'"> Studenti</span>
+                <span ng-if="user && user.Role == 'Administrator'"> Menadžeri</span></b></a>
         <a href="#/faculty" class="btn btn-primary" ng-if="user && user.Role == 'Manager'">
             <span class="glyphicon glyphicon-book" ></span><b> Fakultet</b></a>
-        <a href="#/users" class="btn btn-primary" ng-if="user && user.Role !== 'Student'">
-            <span class="glyphicon glyphicon-user" ></span><b> Studenti 
-                <span ng-if="user && user.Role == 'Administrator'">i menadžeri</span></b></a>
-
         <!-- All except admin -->
         <a href="#/unis" class="btn btn-primary" ng-if="user && user.Role !== 'Administrator'">
             <span class="glyphicon glyphicon-home" ></span><b> Čitaonice</b></a>

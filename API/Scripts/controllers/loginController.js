@@ -17,6 +17,8 @@ app.controller('loginController', ['$scope', '$window', 'userService', function(
             $scope.$parent.user = response.data;
             localStorage.token = response.data.Token;
             $window.location.href = "#/profile";
+          } else {
+            alert("Unešeni su neispravni podaci.");
           }
         }
       );

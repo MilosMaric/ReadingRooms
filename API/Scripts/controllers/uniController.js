@@ -32,7 +32,7 @@ app.controller('uniController', ['$scope', '$window', 'universityService', funct
     };
 
     $scope.delete = function(id, idx) {
-      if(idx) {
+      if(idx && confirm("Ako obrišete univerzitet, brišu se svi fakulteti i studenti koji mu pripadaju. Da li ste sigurni da želite da obrišete univerzitet?")) {
         universityService.delete(id).then(
           function() {
             $scope.unis.splice(idx, 1);

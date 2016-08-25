@@ -87,7 +87,7 @@ namespace API.Services.Implementations
                 facultyRepository.Delete(id);
                 isDeleted = true;
             }
-            catch (Exception) { }
+            catch (Exception e) {}
 
             return isDeleted;
         }

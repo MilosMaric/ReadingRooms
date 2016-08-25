@@ -7,7 +7,21 @@
 
 .table{
 	background-color: white;
-	font-size: 14px;
+	opacity: 0.90;
+}
+
+.table tr {
+	padding: 2px;
+}
+
+.rightSide {
+	float: right;
+	margin-right: 2px;
+}
+
+.leftSide {
+	float: left;
+	margin-left: 2px;
 }
 
 .bg{

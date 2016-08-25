@@ -11,4 +11,24 @@ app.service('userService', function($http){
   this.getLoggedUser = function(){
 		return $http.get("api/login");
 	}
+
+	this.getAll = function() {
+		return $http.get(url);
+	}
+
+	this.getById = function(id) {
+		return $http.get(url + "/" + id);
+	}
+
+	this.add = function(user){
+		return $http.post(url, user);
+	}
+
+  this.update = function(id, user){
+		return $http.put(url + "/" + id, user);
+	}
+
+  this.delete = function(id){
+		return $http.delete(url + "/" + id);
+	}
 });

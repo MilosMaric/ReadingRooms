@@ -4,18 +4,22 @@ app.controller('appController', ['$scope', '$window', 'userService', function($s
       $scope.checkSession()
     }
 
-    $scope.checkSession = function() {
+    $scope.checkSession = function(callback) {
       var token = $window.localStorage.token;
 
       if(!$scope.user) {
         if(!token) {
-          $window.location.href = "#/login";
+          if(!$window.location.href.endsWith("#/register")) {
+            $window.location.href = "#/login";
+          }
         } else {
           userService.getLoggedUser().then(
             function(response) {
               if(response.data){
                 $scope.user = { Role: response.data.Role};
-
+                if(callback) {
+                  callback();
+                }
                 if($window.location.href == "#/login" || $window.location.href == "#/register") {
                   $window.location.href = "#/profile";
                 }
@@ -27,6 +31,8 @@ app.controller('appController', ['$scope', '$window', 'userService', function($s
             }
           );
         }
+      } else if(callback) {
+        callback();
       }
     }
 

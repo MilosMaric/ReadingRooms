@@ -88,6 +88,7 @@ namespace DAL.Repositories.Implementations
             {
                 users = ctx.USERs
                     .Include(f => f.FACULTY)
+                    .OrderBy(u => u.USR_ID)
                     .ToList();
                     
             }

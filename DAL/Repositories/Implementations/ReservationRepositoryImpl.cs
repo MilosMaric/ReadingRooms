@@ -92,6 +92,7 @@ namespace DAL.Repositories.Implementations
             {
                 reservations = ctx.RESERVATIONs
                     .Where(s => s.RES_ID > 0)
+                    .OrderBy(u => u.RES_ID)
                     .Include(s => s.SEATs)
                     .Include(s => s.USER)
                     .ToList();

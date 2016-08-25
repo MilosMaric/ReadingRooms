@@ -2,9 +2,6 @@ app.controller('registerController', ['$scope', '$window', 'userService', functi
 
     function init() {
       $scope.$parent.checkSession();
-      if($scope.$parent.user) {
-        $window.location.href = "#/profile";
-      }
     }
 
     init();

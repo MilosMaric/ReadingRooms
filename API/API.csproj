@@ -305,6 +305,10 @@
     <Content Include="Scripts\partials\registerPartial.html" />
     <Content Include="Scripts\partials\uniPartial.html" />
     <Content Include="Scripts\partials\usersPartial.html" />
+    <Content Include="Scripts\services\facultyService.js" />
+    <Content Include="Scripts\services\readingRoomService.js" />
+    <Content Include="Scripts\services\reservationService.js" />
+    <Content Include="Scripts\services\uniService.js" />
     <Content Include="Scripts\services\userService.js" />
     <Content Include="Scripts\stilovi.css" />
     <Content Include="Scripts\theme\css\grayscale.css" />

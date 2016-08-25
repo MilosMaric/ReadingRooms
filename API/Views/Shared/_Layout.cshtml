@@ -19,6 +19,12 @@
     
     <script src="~/Scripts/app.js"></script>
     <link href="~/Scripts/stilovi.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/services/userService.js"></script>
+    <script src="~/Scripts/services/uniService.js"></script>
+    <script src="~/Scripts/services/facultyService.js"></script>
+    <script src="~/Scripts/services/readingRoomService.js"></script>
+    <script src="~/Scripts/services/reservationService.js"></script>
 
     <script src="~/Scripts/controllers/usersController.js"></script>
     <script src="~/Scripts/controllers/appController.js"></script>
@@ -28,7 +34,6 @@
     <script src="~/Scripts/controllers/registerController.js"></script>
     <script src="~/Scripts/controllers/uniController.js"></script>
 
-    <script src="~/Scripts/services/userService.js"></script>
 
 </head>
 <body ng-controller="appController" class="bg">
@@ -43,8 +48,8 @@
         <!-- Staff -->
         <a href="#/uni" class="btn btn-primary" ng-if="user && user.Role == 'Administrator'">
             <span class="glyphicon glyphicon-education" ></span><b> Univerziteti</b></a>
-        <a href="#/faculty" class="btn btn-primary" ng-if="user && user.Role !== 'Student'">
-            <span class="glyphicon glyphicon-book" ></span><b> Fakulteti</b></a>
+        <a href="#/faculty" class="btn btn-primary" ng-if="user && user.Role == 'Manager'">
+            <span class="glyphicon glyphicon-book" ></span><b> Fakultet</b></a>
         <a href="#/users" class="btn btn-primary" ng-if="user && user.Role !== 'Student'">
             <span class="glyphicon glyphicon-user" ></span><b> Studenti 
                 <span ng-if="user && user.Role == 'Administrator'">i menadžeri</span></b></a>

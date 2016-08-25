@@ -34,7 +34,6 @@ namespace API.Controllers
         }
 
         // POST api/<controller>
-        [JWTAuthorize(Anonymous = true)]
         public JWTDTO Post([FromBody]LoginDTO credentials)
         {
             JWTDTO jwt;

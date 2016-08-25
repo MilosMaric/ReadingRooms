@@ -87,8 +87,9 @@ namespace DAL.Repositories.Implementations
 
             using (ctx = new ReadingRoomsEntities())
             {
-                unis = ctx.UNIVERSITies
+                unis = ctx.UNIVERSITies                    
                     .Where(u => u.UNI_ID > 0)
+                    .OrderBy(u => u.UNI_ID)
                     .ToList();
             }
 

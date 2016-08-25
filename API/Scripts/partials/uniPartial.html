@@ -1,3 +1,53 @@
-<div>
-  <h1>UNIVERZITET</h1>
+<div class="centered"><br/><br/>
+	<h2>Univerziteti</h2>
+	<br/>
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8 centered" >
+    <div ng-if="mode == 'VIEW'">
+      <button ng-click="addMode()" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> Dodaj novi univerzitet</button>
+      <button ng-click="refresh()" class="btn btn-primary">
+        <span class="glyphicon glyphicon-refresh"></span> Osveži</button>
+        <br/><br/>
+      <table ng-if="unis.length" class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="centered">Redni broj</th>
+            <th class="centered">Naziv</th>
+            <th class="centered">Grad</th>
+            <th class="centered">Operacije</th>
+          </tr>
+          <tr data-ng-repeat="(index, uni) in unis track by $index" class="centered">
+            <td class="centered">{{$index + 1}}</td>
+            <td class="centered">{{uni.Name}}</td>
+            <td class="centered">{{uni.City}}</td>
+            <td ng-if="!isRefFilter">
+            <button ng-click="editMode(uni, index)" class="btn btn-warning">
+              <span class="glyphicon glyphicon-edit"></span> Uredi</button>
+            <button ng-click="delete(uni.Id, index)"  class="btn btn-danger">
+              <span class="glyphicon glyphicon-trash"></span> Obriši</button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-if="mode !== 'VIEW'">
+      <label>Naziv univerziteta:</label>
+  		<br/>
+  		<input required type = "text" ng-model = "uni.Name" class="form-control"/>
+  		<br/><br/>
+  		<label>Naziv grada:</label>
+  		<br/>
+  		<input required type = "text" ng-model = "uni.City" class="form-control"/>
+  		<br/><br/>
+  		<button class="btn btn-success" ng-click="add()" ng-if="mode == 'ADD'"><span class="glyphicon glyphicon-ok" ></span>
+         <span ng-if="mode == 'ADD'"> Napravi</span>
+       </button>
+       <button class="btn btn-success" ng-click="edit()" ng-if="mode == 'EDIT'"><span class="glyphicon glyphicon-ok" ></span>
+          <span> Uredi</span>
+        </button>
+      <button class="btn btn-danger" ng-click="viewMode()" ng-if="mode != 'VIEW'">
+        <span class="glyphicon glyphicon-remove" ></span> Otkaži</button>
+    </div>
+	</div>
 </div>

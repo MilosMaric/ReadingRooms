@@ -91,6 +91,7 @@ namespace DAL.Repositories.Implementations
             {
                 faculties = ctx.FACULTies
                     .Where(f => f.FAC_ID > 0)
+                    .OrderBy(u => u.FAC_ID)
                     .Include(f => f.UNIVERSITY)
                     .ToList();
             }

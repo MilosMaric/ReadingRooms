@@ -92,6 +92,7 @@ namespace DAL.Repositories.Implementations
             {
                 rrooms = ctx.READING_ROOM
                     .Where(rr => rr.RROOM_ID > 0)
+                    .OrderBy(u => u.RROOM_ID)
                     .Include(rr => rr.UNIVERSITY)
                     .Include(rr => rr.FACULTY)
                     .ToList();

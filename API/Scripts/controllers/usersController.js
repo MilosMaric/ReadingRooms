@@ -5,13 +5,6 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
       $scope.$parent.checkSession($scope.setHeading);
       $scope.users = [];
       $scope.mode = "VIEW";
-      userService.getAll().then(
-        function(response) {
-          if(response.data.length) {
-            $scope.users = $scope.filterByRole(response.data);
-          }
-        }
-      );
     }
 
     $scope.getRole = function() {
@@ -42,6 +35,8 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
       } else if(loggedRole === "Manager") {
         $scope.heading = "Studenti";
       }
+
+      $scope.refresh();
     }
 
     $scope.filterByRole = function(allUsers) {
@@ -49,6 +44,38 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
       var filtered = allUsers.filter(function(item) { return item.Role === role});
       return filtered;
     }
+
+    $scope.refresh = function() {
+      var role = $scope.getRole();
+
+      if(role === "Manager") {
+        userService.getAll().then(
+          function(response) {
+            if(response.data.length) {
+              $scope.users = $scope.filterByRole(response.data);
+            }
+          }
+        );
+      } else if(role === "Student") {
+        userService.getLoggedUser().then(
+          function(response) {
+            if(response.data) {
+              facultyService.getStudents(response.data.FacultyId).then(
+                function(response1) {
+                  if(response1.data.length > 1) {
+                    $scope.users = $scope.filterByRole(response1.data);
+                  } else {
+                    alert("Nema registrovanih studenata sa fakulteta pod nazivom " + response.data.FacultyName);
+                    $window.location.href = "#/profile";
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    }
+
 
     init();
 
@@ -139,13 +166,4 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
       );
     }
 
-    $scope.refresh = function() {
-      userService.getAll().then(
-        function(response) {
-          if(response.data.length) {
-            $scope.users = $scope.filterByRole(response.data);
-          }
-        }
-      );
-    }
 }]);

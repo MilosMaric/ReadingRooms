@@ -16,4 +16,8 @@ app.service('facultyService', function($http){
 	this.delete = function(id){
 		return $http.delete(url + "/" + id);
 	}
+
+	this.getStudents = function(facId) {
+		return $http.get(url + "/" + facId + "/students");
+	}
 });

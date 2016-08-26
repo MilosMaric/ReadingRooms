@@ -1,8 +1,8 @@
 <div class="centered"><br/><br/>
 	<h2>Profil</h2>
 	<br/>
-	<div class="col-sm-2"></div>
-	<div class="col-sm-8 centered" >
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6 centered" >
     <table class="table-striped table">
       <tr>
         <td colspan="2">
@@ -32,7 +32,7 @@
         </td>
       </tr>
       <tr ng-if="mode==='EDIT'">
-        <td>Ponovljena novu lozinku:</td>
+        <td>Ponovljena nova lozinka:</td>
         <td>
           <input type = "password" ng-model = "confirm.confirmedNewPassword" class="form-control"
             ng-class="{invalidInput : confirm.newPassword && confirm.confirmedNewPassword !== confirm.newPassword}"/>

@@ -1,3 +1,77 @@
-<div>
-  <h1>FAKULTET</h1>
+<div class="centered"><br/><br/>
+	<h2>Fakultet</h2>
+	<br/>
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8 centered" >
+    <table class="table-striped table">
+      <tr>
+        <td colspan="2">
+          <h4 class="tableHeading">Informacije o fakultetu:</h4>
+          <button class="btn btn-warning rightSide" ng-click="editMode()" ng-if="mode==='VIEW' && faculty">
+            <span class="glyphicon glyphicon-edit" ></span></button>
+          </td>
+      </tr>
+      <tr>
+        <td>*Naziv:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.Name}}</span>
+          <input type = "text" ng-model = "newFac.Name" class="form-control" ng-if="mode==='EDIT'"
+            ng-class="{invalidInput : !newFac.Name.length}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Univerzitet:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.UniversityName}}</span>
+          <select ng-model="newFac.UniversityId" class="form-control" ng-if="mode==='EDIT'">
+            <option ng-repeat="uni in unis" value="{{uni.Id}}">{{uni.Name}} - {{uni.City}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Skraćenica:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.Abberation}}</span>
+          <input type = "text" ng-model = "newFac.Abberation" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr>
+        <td>*Adresa:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.Address}}</span>
+          <input type = "text" ng-model = "newFac.Address" class="form-control" ng-if="mode==='EDIT'"
+          ng-class="{invalidInput : !newFac.Address.length}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Web stranica:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.WebSite}}</span>
+          <input type = "text" ng-model = "newFac.WebSite" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.Email}}</span>
+          <input type = "email" ng-model = "newFac.Email" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Telefon:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{faculty.Telephone}}</span>
+          <input type = "text" ng-model = "newFac.Telephone" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr ng-if="mode==='EDIT'">
+        <td colspan="2">
+         <button class="btn btn-danger rightSide" ng-click="viewMode()">
+           <span class="glyphicon glyphicon-remove" ></span> Otkaži</button>
+          <button class="btn btn-success rightSide" ng-click="editFaculty()"><span class="glyphicon glyphicon-ok" ></span>
+           <span> Ažuriraj</span></button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

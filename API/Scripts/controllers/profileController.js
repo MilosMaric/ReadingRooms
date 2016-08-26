@@ -44,7 +44,7 @@ app.controller('profileController', ['$scope', '$window', 'userService', 'facult
       if($scope.isFormValid()) {
         userService.update($scope.editedUser.Id, $scope.editedUser).then(
           function() {
-            $scope.loggedUser = angular.copy($scope.editedUser);
+            $scope.getLoggedUser();
             $scope.viewMode();
             alert("Uspešno ste ažurirali nalog.");
           }

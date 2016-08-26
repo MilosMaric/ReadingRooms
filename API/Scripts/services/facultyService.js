@@ -1,8 +1,12 @@
 app.service('facultyService', function($http){
 	var url = '/api/faculty';
 
-	this.getAll = function(user){
+	this.getAll = function(){
 		return $http.get(url);
+	}
+
+	this.getById = function(id){
+		return $http.get(url + "/" + id);
 	}
 
 	this.add = function(fac){

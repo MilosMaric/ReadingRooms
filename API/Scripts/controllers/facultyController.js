@@ -3,6 +3,7 @@ app.controller('facultyController', ['$scope', '$window', 'universityService', '
 
   function init() {
     $scope.$parent.checkSession($scope.getLoggedUser);
+    $scope.$parent.closeMsnger();
     $scope.mode = "VIEW";
   }
 
@@ -55,7 +56,7 @@ app.controller('facultyController', ['$scope', '$window', 'universityService', '
         function() {
             $scope.changeUniName();
             $scope.viewMode();
-            alert("Uspešno ste ažurirali informacije o fakultetu.");
+            $scope.$parent.showMsg("SUCCESS", "Uspešno ste ažurirali informacije o fakultetu.");
         }
       );
     }
@@ -78,7 +79,7 @@ app.controller('facultyController', ['$scope', '$window', 'universityService', '
       $scope.newFac.Address && $scope.newFac.Address.trim().length > 0) {
         return true;
     }
-    alert("Moraju i naziv i adresa fakulteta biti popunjeni!");
+    $scope.$parent.showMsg("ERROR", "Moraju i naziv i adresa fakulteta biti popunjeni!");
 
     return false;
   }

@@ -3,6 +3,7 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
 
     function init() {
       $scope.$parent.checkSession($scope.setHeading);
+      $scope.$parent.closeMsnger();
       $scope.users = [];
       $scope.mode = "VIEW";
     }
@@ -65,7 +66,7 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
                   if(response1.data.length > 1) {
                     $scope.users = $scope.filterByRole(response1.data);
                   } else {
-                    alert("Nema registrovanih studenata sa fakulteta pod nazivom " + response.data.FacultyName);
+                    $scope.$parent.showMsg("ERROR", "Nema registrovanih studenata sa fakulteta pod nazivom " + response.data.FacultyName);
                     $window.location.href = "#/profile";
                   }
                 }
@@ -100,10 +101,10 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
             $scope.unis = response.data;
             $scope.mode = "ADD";
           } else {
-            alert("Morate prvo uneti univerzitet!");
+            $scope.$parent.showMsg("ERROR", "Morate prvo uneti univerzitet!");
           }
         }, function() {
-          alert("Došlo je do greške prilikom dobavljanja univerziteta!");
+          $scope.$parent.showMsg("ERROR", "Došlo je do greške prilikom dobavljanja univerziteta!");
         }
       );
 
@@ -114,14 +115,14 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
         $scope.passUser.Password = $scope.random.newPassword;
         userService.update($scope.passUser.Id, $scope.passUser).then(
           function() {
-            alert("Lozinka je uspešno promenjena.");
+            $scope.$parent.showMsg("SUCCESS", "Lozinka je uspešno promenjena.");
             $scope.viewMode();
           }, function() {
-            alert("Lozinka nije uspešno promenjena.");
+            $scope.$parent.showMsg("ERROR", "Lozinka nije uspešno promenjena.");
           }
         );
       } else {
-        alert("Morate uneti novu lozinku.");
+        $scope.$parent.showMsg("ERROR", "Morate uneti novu lozinku.");
       }
     }
 
@@ -131,14 +132,14 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
           facultyService.delete(facId).then(
             function() {
               $scope.users.splice(idx, 1);
-              alert("Uspešno obrisan korisnik.");
+              $scope.$parent.showMsg("SUCCESS", "Uspešno obrisan korisnik.");
             }
           );
         } else if($scope.$parent.user.Role === "Manager"){
           userService.delete(userId).then(
             function() {
               $scope.users.splice(idx, 1);
-              alert("Uspešno obrisan korisnik.");
+              $scope.$parent.showMsg("SUCCESS", "Uspešno obrisan korisnik.");
             }
           );
         }
@@ -157,7 +158,7 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
                   $scope.users.push(response1.data);
                   $scope.viewMode();
                 } else {
-                  alert("Neuspešno dodavanje menadžera.");
+                  $scope.$parent.showMsg("ERROR", "Neuspešno dodavanje menadžera.");
                 }
               }
             );

@@ -3,6 +3,7 @@ app.controller('profileController', ['$scope', '$window', 'userService', 'facult
 
     function init() {
       $scope.$parent.checkSession($scope.getLoggedUser);
+      $scope.$parent.closeMsnger();
       $scope.mode = "VIEW";
     }
 
@@ -46,39 +47,26 @@ app.controller('profileController', ['$scope', '$window', 'userService', 'facult
           function() {
             $scope.getLoggedUser();
             $scope.viewMode();
-            alert("Uspešno ste ažurirali nalog.");
+            $scope.$parent.showMsg("SUCCESS", "Uspešno ste ažurirali nalog.");
           }
         );
       }
     }
 
-    $scope.deleteUser = function () {
-        /*if(confirm("Da li ste sigurni da želite da obrišete nalog na koji ste trenutno prijavljeni?")) {
-          userService.delete($scope.loggedUser.Id).then(
-            function () {
-              $scope.$parent.logout();
-              alert("Uspešno ste obrisali nalog.");
-            }, function () {
-              alert("Došlo je do problema prilikom brisanja naloga.");
-            }
-          );
-        }*/
-    }
-
     $scope.isFormValid = function() {
       if(!$scope.confirm.oldPassword) {
-        alert("Morate uneti staru lozinku!");
+        $scope.$parent.showMsg("ERROR", "Morate uneti staru lozinku!");
         return false;
       } else if($scope.confirm.oldPassword.trim() !== $scope.loggedUser.Password) {
-        alert("Niste uneli ispravnu staru lozinku");
+        $scope.$parent.showMsg("ERROR", "Niste uneli ispravnu staru lozinku");
         return false;
       } else if($scope.editedUser.Role === "Student" && (!$scope.editedUser.Index || $scope.editedUser.Index.trim().length === 0)) {
-        alert("Morate uneti oznaku indeksa.");
+        $scope.$parent.showMsg("ERROR", "Morate uneti oznaku indeksa.");
         return false;
       } else {
         if($scope.confirm.newPassword || $scope.confirm.confirmedNewPassword) {
           if($scope.confirm.newPassword !== $scope.confirm.confirmedNewPassword) {
-            alert("Nova lozinka mora dva puta biti unešena");
+            $scope.$parent.showMsg("ERROR", "Nova lozinka mora dva puta biti unešena");
             return false;
           } else {
             $scope.editedUser.Password = $scope.confirm.newPassword;

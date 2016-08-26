@@ -2,6 +2,7 @@ app.controller('uniController', ['$scope', '$window', 'universityService', funct
 
     function init() {
       $scope.$parent.checkSession();
+      $scope.$parent.closeMsnger();
       $scope.uni = {};
       $scope.mode = "VIEW";
       universityService.getAll().then(
@@ -48,7 +49,7 @@ app.controller('uniController', ['$scope', '$window', 'universityService', funct
             $scope.unis.push(response.data);
             $scope.viewMode();
           } else {
-            alert("Došlo je do greške prilikom dodavanja.");
+            $scope.$parent.showMsg("ERROR", "Došlo je do greške prilikom dodavanja.");
           }
         }
       );

@@ -63,7 +63,11 @@
             <span class="glyphicon glyphicon-cog" ></span><b> Profil</b></a>
         <a href="#/login" class="btn btn-primary" ng-click="logout()" ng-if="user">
             <span class="glyphicon glyphicon-log-out" ></span><b> Odjava</b></a>
-        
+    </div>
+    <div class="alert alert-dismissible centered" role="alert messenger" ng-show="msg" 
+        ng-class="{'alert-success' : msgType==='SUCCESS', 'alert-danger' : msgType==='ERROR'}">
+      <span class="glyphicon glyphicon-remove rightSide" ng-click="closeMsnger()"></span>
+       {{msg}}
     </div>
     <section ng-view></section>
 </body>

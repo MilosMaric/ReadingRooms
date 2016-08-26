@@ -3,6 +3,7 @@ app.controller('registerController', ['$scope', '$window', 'userService', 'facul
 
     function init() {
       $scope.$parent.checkSession();
+      $scope.$parent.closeMsnger();
       $scope.user = {};
       $scope.isOccupied = false;
       $scope.getAllUsers();
@@ -46,10 +47,9 @@ app.controller('registerController', ['$scope', '$window', 'userService', 'facul
         userService.add($scope.user).then(
           function(response) {
             if(response.data) {
-              alert("Registracija je uspešna. Bićete prebačeni na stranicu za prijavljivanje.");
               $window.location.href = "#/login";
             } else {
-              alert("Došlo je do greške prilikom registracije.");
+              $scope.$parent.showMsg("ERROR", "Došlo je do greške prilikom registracije.");
             }
           }
         );
@@ -63,7 +63,9 @@ app.controller('registerController', ['$scope', '$window', 'userService', 'facul
         return true;
       }
 
-      alert("Sva polja moraju biti popunjena i korisničko ime jedinstveno. Nije jedinstveno ako je polje za unos uokvireno crveno!");
+      $scope.$parent.showMsg("ERROR",
+      "Sva polja moraju biti popunjena i korisničko ime jedinstveno. Nije jedinstveno ako je polje za unos uokvireno crveno!");
+      
       return false;
     }
 

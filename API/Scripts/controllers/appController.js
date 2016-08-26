@@ -38,6 +38,15 @@ app.controller('appController', ['$scope', '$window', 'userService', function($s
 
     init();
 
+    $scope.showMsg = function(type, content) {
+      $scope.msgType = type;
+      $scope.msg = content;
+    }
+
+    $scope.closeMsnger = function() {
+      $scope.msg = undefined;
+    }
+
     $scope.logout = function() {
       $scope.user = undefined;
       localStorage.clear();

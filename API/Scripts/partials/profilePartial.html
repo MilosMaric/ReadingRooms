@@ -1,3 +1,89 @@
-<div>
-  <h1>MOJ NALOG</h1>
+<div class="centered"><br/><br/>
+	<h2>Profil</h2>
+	<br/>
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8 centered" >
+    <table class="table-striped table">
+      <tr>
+        <td colspan="2">
+          <h4 class="tableHeading">Informacije o nalogu:</h4>
+          <button class="btn btn-warning leftSide" ng-click="editMode()" ng-if="mode==='VIEW' && loggedUser">
+            <span class="glyphicon glyphicon-edit" ></span></button>
+        </td>
+      </tr>
+      <tr>
+        <td>Korisničko ime:</td>
+        <td>
+          {{loggedUser.Username}}
+        </td>
+      </tr>
+      <tr ng-if="mode==='EDIT'">
+        <td>Stara lozinka:</td>
+        <td>
+          <input type = "password" ng-model = "confirm.oldPassword" class="form-control"
+            ng-class="{invalidInput : confirm.oldPassword && confirm.oldPassword !== loggedUser.Password}" placeholder="Morate uneti staru lozinku!"/>
+        </td>
+      </tr>
+      <tr ng-if="mode==='EDIT'">
+        <td>Nova lozinka:</td>
+        <td>
+          <input type = "password" ng-model = "confirm.newPassword" class="form-control"
+              ng-class="{invalidInput : confirm.confirmedNewPassword && confirm.confirmedNewPassword !== confirm.newPassword}"/>
+        </td>
+      </tr>
+      <tr ng-if="mode==='EDIT'">
+        <td>Ponovljena novu lozinku:</td>
+        <td>
+          <input type = "password" ng-model = "confirm.confirmedNewPassword" class="form-control"
+            ng-class="{invalidInput : confirm.newPassword && confirm.confirmedNewPassword !== confirm.newPassword}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{loggedUser.Email}}</span>
+          <input type = "email" ng-model = "editedUser.Email" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Ime:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{loggedUser.Name}}</span>
+          <input type = "text" ng-model = "editedUser.Name" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Prezime:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{loggedUser.LastName}}</span>
+          <input type = "text" ng-model = "editedUser.LastName" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr ng-if="loggedUser.Role === 'Student'">
+        <td>Novi fakultet: </td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{loggedUser.FacultyName}}</span>
+          <select ng-model="editedUser.FacultyId" class="form-control" ng-if="mode==='EDIT'">
+            <option ng-repeat="fac in faculties" value="{{fac.Id}}">
+              {{fac.Name}} - {{fac.UniversityName}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr ng-if="loggedUser.Role === 'Student'">
+        <td>*Indeks:</td>
+        <td>
+          <span ng-if="mode==='VIEW'">{{loggedUser.Index}}</span>
+          <input type = "text" ng-model = "editedUser.Index" class="form-control" ng-if="mode==='EDIT'"/>
+        </td>
+      </tr>
+      <tr ng-if="mode==='EDIT'">
+        <td colspan="2">
+         <button class="btn btn-danger rightSide" ng-click="viewMode()">
+           <span class="glyphicon glyphicon-remove" ></span> Otkaži</button>
+          <button class="btn btn-success rightSide" ng-click="editProfile()"><span class="glyphicon glyphicon-ok" ></span>
+           <span> Izmeni</span></button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

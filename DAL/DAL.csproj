@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="DTOs\BlogDTO.cs" />
     <Compile Include="DTOs\FacultyDTO.cs" />
+    <Compile Include="DTOs\IntervalDTO.cs" />
     <Compile Include="DTOs\JWTDTO.cs" />
     <Compile Include="DTOs\LoginDTO.cs" />
     <Compile Include="DTOs\PostDTO.cs" />

@@ -34,17 +34,37 @@ namespace API.Services.Implementations
                 try
                 {
                     resToAdd = transformer.TransformFromDTO(-1, res);
+                    AddARandomSeat(resToAdd, res);
                     addedRes = reservationRepository.Add(resToAdd);
                     
                     if (CheckHelper.IsFilled(addedRes))
                     {
-                        retVal = FinalizeDTOTransformation(transformer.TransformToDTO(addedRes));
+                        retVal = transformer.TransformToDTO(addedRes);
                     }
                 }
                 catch (Exception) { }
             }
 
             return retVal;        
+        }
+
+        private void AddARandomSeat(RESERVATION resToAdd, ReservationDTO res)
+        {
+            SEAT freeRandomSeat = null;
+
+            List<SEAT> schema = seatRepository.GetForReadingRoom(res.Id);
+
+            foreach (var seat in schema)
+            {
+                if(seatRepository.IsFree(seat.SEAT_ID, res.ETA, res.ETD)) 
+                {
+                    freeRandomSeat = seat;
+                    break;
+                }
+            }
+
+            resToAdd.SEATs = new List<SEAT>();
+            resToAdd.SEATs.Add(freeRandomSeat);
         }
 
         public ReservationDTO Update(long id, ReservationDTO res)
@@ -67,7 +87,7 @@ namespace API.Services.Implementations
 
                     if (CheckHelper.IsFilled(updatedRes))
                     {
-                        retVal = FinalizeDTOTransformation(transformer.TransformToDTO(updatedRes));
+                        retVal = transformer.TransformToDTO(updatedRes);
                     }
                 }
                 catch (Exception) { }
@@ -100,7 +120,7 @@ namespace API.Services.Implementations
                 entries = reservationRepository.GetAll();
                 if (CheckHelper.IsFilled(entries))
                 {
-                    retVal = FinalizeDTOTransformation(transformer.TransformToDTO(entries));
+                    retVal = transformer.TransformToDTO(entries);
                 }
             }
             catch (Exception) { }
@@ -117,7 +137,7 @@ namespace API.Services.Implementations
                 entry = reservationRepository.GetById(id);
                 if (CheckHelper.IsFilled(entry))
                 {
-                    retVal = FinalizeDTOTransformation(transformer.TransformToDTO(entry));
+                    retVal = transformer.TransformToDTO(entry);
                 }
             }
             catch (Exception) { }
@@ -135,7 +155,7 @@ namespace API.Services.Implementations
 		        entries = reservationRepository.GetStudentsReservations(id);
                 if(CheckHelper.IsFilled(entries))
                 {
-                    retVal = FinalizeDTOTransformation(transformer.TransformToDTO(entries));
+                    retVal = transformer.TransformToDTO(entries);
                 }
 	        }
 	        catch (Exception) {}
@@ -153,7 +173,7 @@ namespace API.Services.Implementations
 		        entries = reservationRepository.GetReservationsForReadingRoom(readingRoomId);
                 if(CheckHelper.IsFilled(entries))
                 {
-                    retVal = FinalizeDTOTransformation(transformer.TransformToDTO(entries));
+                    retVal = transformer.TransformToDTO(entries);
                 }
 	        }
 	        catch (Exception) {}
@@ -163,7 +183,7 @@ namespace API.Services.Implementations
 
         public ReservationDTO FinalizeDTOTransformation(ReservationDTO dto)
         {
-            USER user = userRepository.GetById(dto.User.Id);
+            /*USER user = userRepository.GetById(dto.User.Id);
             dto.User = userTransformer.TransformToDTO(user);
 
             RESERVATION reservation = reservationRepository.GetById(dto.Id);
@@ -178,7 +198,7 @@ namespace API.Services.Implementations
 		                dto.Seats.Add(seatDTO);
                     }
 	            }
-            }
+            }*/
 
             return dto;
         }
@@ -193,7 +213,7 @@ namespace API.Services.Implementations
                 reservations = new List<ReservationDTO>();
                 foreach (ReservationDTO res in dto)
 	            {
-		            reservations.Add(FinalizeDTOTransformation(res));
+		            reservations.Add(res);
 	            }
             }
 

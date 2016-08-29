@@ -10,5 +10,6 @@ namespace DAL.Repositories.Interfaces
     {
         bool IsFree(long id, DateTime ETA, DateTime ETD);
         List<SEAT> GetForReadingRoom(long rroomId);
+        long getNextId();
     }
 }

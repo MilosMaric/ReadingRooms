@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.DTOs
 {
-    public class ReservationDTO
+    public class IntervalDTO
     {
-        public long Id { get; set; }
         public DateTime ETA { get; set; }
         public DateTime ETD { get; set; }
-        public long UserId { get; set; }
-        public ReadingRoomDTO ReadingRoom { get; set; }
     }
 }

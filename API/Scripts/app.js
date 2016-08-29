@@ -26,6 +26,10 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
 			    controller: 'usersController',
 			    templateUrl: 'Scripts/partials/usersPartial.html',
 			})
+      .when('/rroom', {
+			    controller: 'rroomsController',
+			    templateUrl: 'Scripts/partials/rroomsPartial.html',
+			})
 	    .otherwise({
 	        redirectTo: '/'
 	    });

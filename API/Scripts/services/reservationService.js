@@ -1,3 +1,3 @@
-app.service('uniService', function($http){
-	var url = '/api/reservation';	
+app.service('reservationService', function($http){
+	var url = '/api/reservation';
 });

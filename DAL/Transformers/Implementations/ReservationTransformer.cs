@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.DTOs;
 using DAL.Helpers;
+using DAL.Repositories.Implementations;
 
 namespace DAL.Transformers.Implementations
 {
@@ -13,6 +14,14 @@ namespace DAL.Transformers.Implementations
         public ReservationDTO TransformToDTO(RESERVATION entry)
         {
             ReservationDTO dto = null;
+            READING_ROOM rroom = null;
+            ReadingRoomRepositoryImpl repo = new ReadingRoomRepositoryImpl();
+
+            if (CheckHelper.IsFilled(entry.SEATs))
+            {
+                rroom = repo.GetById(entry.SEATs.ToList()[0].RROOM_ID);
+            }
+
 
             if (CheckHelper.IsFilled(entry))
             { 
@@ -21,7 +30,8 @@ namespace DAL.Transformers.Implementations
                     Id = entry.RES_ID,
                     ETA = entry.RES_ETA,
                     ETD = entry.RES_ETD,
-                    User = new UserDTO() { Id = entry.USR_ID }
+                    UserId = entry.USR_ID,
+                    ReadingRoom = new ReadingRoomTransformer().TransformToDTO(rroom)
                 };
             }
 
@@ -49,7 +59,7 @@ namespace DAL.Transformers.Implementations
             return new RESERVATION()
             {
                 RES_ID = id,
-                USR_ID = dto.User.Id,
+                USR_ID = dto.UserId,
                 RES_ETA = dto.ETA,
                 RES_ETD = dto.ETD
             };

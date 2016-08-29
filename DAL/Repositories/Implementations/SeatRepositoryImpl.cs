@@ -130,5 +130,21 @@ namespace DAL.Repositories.Implementations
 
             return seats;
         }
+
+
+        public long getNextId()
+        {
+            long id = 1;
+            using (ctx = new ReadingRoomsEntities())
+            {
+                SEAT maxSeat = ctx.SEATs.OrderByDescending(s => s.SEAT_ID).FirstOrDefault();
+                if (CheckHelper.IsFilled(maxSeat))
+                {
+                    id = maxSeat.SEAT_ID + 1;
+                }
+            }
+
+            return id;
+        }
     }
 }

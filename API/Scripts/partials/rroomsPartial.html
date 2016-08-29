@@ -1,0 +1,70 @@
+<div class="centered"><br/><br/>
+	<h2>Čitaonica</h2>
+	<br/>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4 centered" >
+    <table class="table table-striped" >
+      <tbody>
+        <tr>
+          <td colspan="2">
+            <h4>Informacije o čitaonici:</h4>
+          </td>
+        </tr>
+        <tr>
+          <td>Broj mesta:</td>
+          <td>
+            <span ng-if="mode==='VIEW'">{{rroom.Dimension}}</span>
+            <input type = "number" ng-model = "newRroom.Dimension" class="form-control" ng-if="mode==='EDIT'" min="1"/>
+          </td>
+        </tr>
+        <tr ng-if="mode==='VIEW'">
+          <td>Radno vreme: </td>
+          <td>{{formatTime(rroom.WorkingTimeFrom)}} - {{formatTime(rroom.WorkingTimeTo)}}</td>
+        </tr>
+        <tr ng-if="mode==='VIEW'">
+          <td>Provera indeksa: </td>
+          <td>
+            <span ng-if="rroom.ChecksIndex">{{formatTime(rroom.ChecksIndexFrom)}} - {{formatTime(rroom.ChecksIndexTo)}}</span>
+            <span ng-if="!rroom.ChecksIndex">Ne</span>
+          </td>
+        </tr>
+        <tr ng-if="mode==='EDIT'">
+          <td class="centered" colspan="2"><label>Radno vreme:</label></td>
+        </tr>
+        <tr ng-if="mode==='EDIT'">
+          <td class="centered">Od:</td>
+          <td class="centered">Do:</td>
+        </tr>
+        <tr ng-if="mode==='EDIT'">
+          <td class="timepicker">
+            <timepicker ng-model="newRroom.WorkingTimeFrom" show-meridian="false" ng-class="{invalidInput :  checkWTFrom()}"/>
+          </td>
+          <td class="timepicker">
+            <timepicker ng-model="newRroom.WorkingTimeTo" show-meridian="false" ng-class="{invalidInput :  checkWTTo()}"/>
+          </td>
+        </tr>
+        <tr ng-if="mode==='EDIT'">
+          <td class="centered" colspan="2">
+            <label class="centered"> <input type="checkbox"  ng-model="newRroom.ChecksIndex" ng-change=" checksIndexesChange()">
+              Provera indeksa<span ng-if="newRroom.ChecksIndex">:</span><span ng-if="!newRroom.ChecksIndex">?</span>
+            </label>
+          </td>
+        </tr>
+        <tr ng-if="newRroom.ChecksIndex && mode==='EDIT'">
+          <td class="timepicker">
+            Od: <timepicker ng-model="newRroom.ChecksIndexFrom" show-meridian="false" ng-class="{invalidInput :  checkIdxFrom()}"/>
+          </td>
+          <td class="timepicker">
+            Do: <timepicker ng-model="newRroom.ChecksIndexTo" show-meridian="false" ng-class="{invalidInput :  checkIdxTo()}"/>
+          </td>
+        </tr>
+        <tr ng-if="mode==='EDIT'">
+          <td colspan="2">
+            <button class="btn btn-success rightSide" ng-click="saveRroom()" ng-if="!rroom">
+              <span class="glyphicon glyphicon-ok" ></span> Sačuvaj</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

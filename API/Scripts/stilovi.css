@@ -66,4 +66,9 @@ div, h{
     position: fixed;
     bottom: 0;
     width: 100%;
+		z-index: 10;
+}
+
+.timepicker {
+	padding: 0 12% !important;
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.DTOs;
 using DAL.Helpers;
+using DAL.Repositories.Implementations;
 
 namespace DAL.Transformers
 {
@@ -32,17 +33,10 @@ namespace DAL.Transformers
                     UniversityId = 0
                 };
 
-                if (CheckHelper.IsFilled(entry.FACULTY))
-                {
-                    dto.FacultyId = (long)entry.FAC_ID;
-                    dto.FacultyName = entry.FACULTY.FAC_NAME;
-                }
+                dto.FacultyId = (long)entry.FAC_ID;
 
-                if (CheckHelper.IsFilled(entry.UNIVERSITY))
-                {
-                    dto.FacultyId = (long)entry.UNI_ID;
-                    dto.FacultyName = entry.UNIVERSITY.UNI_NAME;
-                }
+
+                dto.FacultyName = new FacultyRepositoryImpl().GetById(dto.FacultyId).FAC_NAME;
             }
 
             return dto;
@@ -55,6 +49,7 @@ namespace DAL.Transformers
 
             if (CheckHelper.IsFilled(entries))
             {
+                dtos = new List<ReadingRoomDTO>();
                 foreach (READING_ROOM rroom in entries)
                 {
                     dto = TransformToDTO(rroom);

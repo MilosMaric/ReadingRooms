@@ -292,6 +292,8 @@
     <Content Include="Scripts\controllers\loginController.js" />
     <Content Include="Scripts\controllers\profileController.js" />
     <Content Include="Scripts\controllers\registerController.js" />
+    <Content Include="Scripts\controllers\reservationController.js" />
+    <Content Include="Scripts\controllers\rroomsController.js" />
     <Content Include="Scripts\controllers\uniController.js" />
     <Content Include="Scripts\controllers\usersController.js" />
     <Content Include="Scripts\images\bg.jpg" />
@@ -303,18 +305,17 @@
     <Content Include="Scripts\partials\loginPartial.html" />
     <Content Include="Scripts\partials\profilePartial.html" />
     <Content Include="Scripts\partials\registerPartial.html" />
+    <Content Include="Scripts\partials\reservationPartial.html" />
+    <Content Include="Scripts\partials\rroomsPartial.html" />
     <Content Include="Scripts\partials\uniPartial.html" />
     <Content Include="Scripts\partials\usersPartial.html" />
     <Content Include="Scripts\services\facultyService.js" />
     <Content Include="Scripts\services\readingRoomService.js" />
     <Content Include="Scripts\services\reservationService.js" />
+    <Content Include="Scripts\services\rroomsService.js" />
     <Content Include="Scripts\services\uniService.js" />
     <Content Include="Scripts\services\userService.js" />
     <Content Include="Scripts\stilovi.css" />
-    <Content Include="Scripts\theme\css\grayscale.css" />
-    <Content Include="Scripts\theme\css\grayscale.min.css" />
-    <Content Include="Scripts\theme\js\grayscale.js" />
-    <Content Include="Scripts\theme\js\grayscale.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

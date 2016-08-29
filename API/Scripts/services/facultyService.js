@@ -24,4 +24,8 @@ app.service('facultyService', function($http){
 	this.getStudents = function(facId) {
 		return $http.get(url + "/" + facId + "/students");
 	}
+
+	this.getReadingRoom = function(facId) {
+		return $http.get(url + "/" + facId + "/rrooms");
+	}
 });

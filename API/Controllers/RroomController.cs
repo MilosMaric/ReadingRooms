@@ -30,15 +30,28 @@ namespace API.Controllers
         }
 
         [GET("api/faculty/{rroomId}/schema")]
-        public List<SeatDTO> GetFacStudents(int rroomId)
+        public int GetFacStudents(int rroomId, [FromBody]IntervalDTO interval)
         {
-            return rroomService.GetSittingSchema(rroomId);
+            return rroomService.GetNumberOfFreeSeats(rroomId, interval.ETA, interval.ETD);
         }
 
         // POST api/<controller>
         [JWTAuthorize(ForbiddenRole = AppConstants.STUDENT)]
         public ReadingRoomDTO Post([FromBody]ReadingRoomDTO rroom)
         {
+            rroom.WorkingTimeFrom = rroom.WorkingTimeFrom.AddHours(2);
+            rroom.WorkingTimeTo = rroom.WorkingTimeTo.AddHours(2);
+
+            if (rroom.ChecksIndex)
+            {
+                rroom.ChecksIndexFrom = rroom.ChecksIndexFrom.AddHours(2);
+                rroom.ChecksIndexTo = rroom.ChecksIndexTo.AddHours(2);
+            }
+            else 
+            {
+                rroom.ChecksIndexFrom = DateTime.Now;
+                rroom.ChecksIndexTo = DateTime.Now;
+            }
             ReadingRoomDTO retVal = rroomService.Add(rroom);
             return retVal;
         }

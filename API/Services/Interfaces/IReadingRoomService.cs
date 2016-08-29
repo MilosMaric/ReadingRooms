@@ -18,5 +18,6 @@ namespace API.Services.Interfaces
         List<SeatDTO> GetSittingSchema(long rroomID);
         void AddSeats(List<SeatDTO> schedule);
         void UpdateSeats(List<SeatDTO> schedule);
+        int GetNumberOfFreeSeats(long id, DateTime ETA, DateTime ETD);
     }
 }

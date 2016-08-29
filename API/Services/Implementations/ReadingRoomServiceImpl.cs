@@ -26,6 +26,9 @@ namespace API.Services.Implementations
         {
             READING_ROOM rroomToAdd, addedRRoom;
             ReadingRoomDTO retVal;
+            SEAT seat;
+            List<SEAT> seats = new List<SEAT>();
+            long seatID;
 
             retVal = null;
 
@@ -33,7 +36,21 @@ namespace API.Services.Implementations
             {
                 try
                 {
+                    seatID = seatRepository.getNextId();
+                    for (int i = 0; i < rroom.Dimension; i++)
+                    {
+                        seat = new SEAT()
+                        {
+                            SEAT_LABEL = "" + (i + 1),
+                            SEAT_POSITION = i + 1,
+                            RROOM_ID = rroom.Id,
+                            SEAT_ID = seatID+i
+                        };
+                        seats.Add(seat);
+                    }
+
                     rroomToAdd = transformer.TransformFromDTO(-1, rroom);
+                    rroomToAdd.SEATs = seats;
                     addedRRoom = rroomRepository.Add(rroomToAdd);
 
                     if (CheckHelper.IsFilled(addedRRoom))
@@ -42,7 +59,7 @@ namespace API.Services.Implementations
                         retVal = transformer.TransformToDTO(addedRRoom);
                     }
                 }
-                catch (Exception) { }
+                catch (Exception) { throw;  }
             }
 
             return retVal;
@@ -145,7 +162,6 @@ namespace API.Services.Implementations
             return retVal;
         }
 
-
         public void AddSeats(List<SeatDTO> schedule)
         {
             SEAT seat;
@@ -172,6 +188,24 @@ namespace API.Services.Implementations
                     seatRepository.Update(seat);
                 }
             }
+        }
+
+
+        public int GetNumberOfFreeSeats(long id, DateTime ETA, DateTime ETD)
+        {
+            int numOfFreeSeats = 0;
+            List<SEAT> schedule = new List<SEAT>();
+
+            schedule = seatRepository.GetForReadingRoom(id);
+            foreach (var seat in schedule)
+            {
+                if (seatRepository.IsFree(seat.SEAT_ID, ETA, ETD)) 
+                {
+                    numOfFreeSeats++;
+                }
+            }
+
+            return numOfFreeSeats;
         }
     }
 }

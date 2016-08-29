@@ -138,7 +138,7 @@ namespace API.Services.Implementations
             rrooms = rroomRepository.GetRRoomsForFaculty(facId);
             rroomTransformer = new ReadingRoomTransformer();
 
-            if (CheckHelper.IsFilled(faculty) && CheckHelper.IsFilled(faculty.READING_ROOM))
+            if (CheckHelper.IsFilled(rrooms))
             {
                 retVal = rroomTransformer.TransformToDTO(rrooms);
             }

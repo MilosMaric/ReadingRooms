@@ -5,7 +5,7 @@ app.controller('reservationController', ['$scope', '$window', 'userService', 're
       $scope.$parent.checkSession($scope.getReservations);
       $scope.$parent.closeMsnger();
       $scope.dpOptions = {
-        minDate : $scope.addDays(1),
+        minDate : $scope.addDays(0),
         maxDate : $scope.addDays(8),
         maxMode : "day"
       }

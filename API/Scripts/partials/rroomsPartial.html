@@ -52,10 +52,10 @@
         </tr>
         <tr ng-if="newRroom.ChecksIndex && mode==='EDIT'">
           <td class="timepicker">
-            Od: <timepicker ng-model="newRroom.ChecksIndexFrom" show-meridian="false" ng-class="{invalidInput :  checkIdxFrom()}"/>
+            Od: <div uib-timepicker ng-model="newRroom.ChecksIndexFrom" show-meridian="false" ng-class="{invalidInput :  checkIdxFrom()}"></div>
           </td>
           <td class="timepicker">
-            Do: <timepicker ng-model="newRroom.ChecksIndexTo" show-meridian="false" ng-class="{invalidInput :  checkIdxTo()}"/>
+            Do: <div uib-timepicker ng-model="newRroom.ChecksIndexTo" show-meridian="false" ng-class="{invalidInput :  checkIdxTo()}"></div>
           </td>
         </tr>
         <tr ng-if="mode==='EDIT'">

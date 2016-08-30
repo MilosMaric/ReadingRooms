@@ -1,0 +1,42 @@
+<div class="centered"><br/><br/>
+	<h2>Trenutna stanja čitaonica</h2>
+	<br/>
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10 centered" >
+    <div>
+      <button ng-click="setStep(1)" class="btn btn-primary">1 sat</button>
+      <button ng-click="setStep(2)" class="btn btn-primary">2 sata</button>
+      <button ng-click="setStep(3)" class="btn btn-primary">3 sata</button>
+      <br/><br/>
+      <button class="btn btn-primary centered" ng-click="getAllSchemas()">
+        <span class="glyphicon glyphicon-search" ></span> {{buttonNames[intervalStep-1]}}
+      </button>
+      <br/><br/>
+      <table ng-if="rrooms.length" class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="centered">Redni broj</th>
+            <th class="centered">Univerzitet</th>
+            <th class="centered">Fakultet</th>
+            <th class="centered">Radno vreme</th>
+            <th class="centered">Provera indeksa</th>
+            <th class="centered">Broj slobodnih mesta</th>
+          </tr>
+          <tr data-ng-repeat="(index, status) in rrooms track by $index" class="centered">
+            <td class="centered">{{$index + 1}}</td>
+            <td class="centered">{{status.UniversityName}}</td>
+            <td class="centered">{{status.FacultyName}}</td>
+            <td class="centered">
+              {{formatTime(status.ReadingRoom.WorkingTimeFrom)}} - {{formatTime(status.ReadingRoom.WorkingTimeTo)}}
+            </td>
+            <td class="centered">
+              <span ng-if="!status.ReadingRoom.ChecksIndex">Ne</span>
+              <span ng-if="status.ReadingRoom.ChecksIndex">
+                {{formatTime(status.ReadingRoom.ChecksIndexFrom)}} - {{formatTime(status.ReadingRoom.ChecksIndexTo)}}
+              </span>
+            </td>
+            <td class="centered">{{status.FreeSeats}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

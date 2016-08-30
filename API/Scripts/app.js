@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngRoute', 'ui.bootstrap']);
+﻿var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngTable']);
 
 app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
     $routeProvider
@@ -33,6 +33,10 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
       .when('/reservations', {
 			    controller: 'reservationController',
 			    templateUrl: 'Scripts/partials/reservationPartial.html',
+			})
+      .when('/statuses', {
+			    controller: 'statusController',
+			    templateUrl: 'Scripts/partials/statusPartial.html',
 			})
 	    .otherwise({
 	        redirectTo: '/'

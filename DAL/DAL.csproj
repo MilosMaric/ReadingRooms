@@ -57,6 +57,7 @@
     <Compile Include="DTOs\LoginDTO.cs" />
     <Compile Include="DTOs\PostDTO.cs" />
     <Compile Include="DTOs\ReadingRoomDTO.cs" />
+    <Compile Include="DTOs\ReadingRoomStatusDTO.cs" />
     <Compile Include="DTOs\ReportDTO.cs" />
     <Compile Include="DTOs\ReservationDTO.cs" />
     <Compile Include="DTOs\SeatDTO.cs" />

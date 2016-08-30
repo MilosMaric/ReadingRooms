@@ -12,4 +12,12 @@ app.service('rroomsService', function($http){
 		fakeETD.setHours(ETD.getHours() - 2);
 		return $http.get(url + "/" + id + "/schema?ETA=" + fakeETA.toUTCString() + "&ETD=" + fakeETD.toUTCString());
 	}
+
+	this.getAllSchemas = function(ETA, ETD) {
+		var fakeETA = angular.copy(ETA);
+		var fakeETD = angular.copy(ETD);
+		fakeETA.setHours(ETA.getHours() - 2);
+		fakeETD.setHours(ETD.getHours() - 2);
+		return $http.get(url + "/schemas?ETA=" + fakeETA.toUTCString() + "&ETD=" + fakeETD.toUTCString());
+	}
 });

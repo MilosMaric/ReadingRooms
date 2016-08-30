@@ -18,6 +18,7 @@ namespace API.Services.Implementations
         private IReadingRoomRepository rroomRepository = new ReadingRoomRepositoryImpl();
         private ISeatRepository seatRepository = new SeatRepositoryImpl();
         private IFacultyRepository facultyRepository = new FacultyRepositoryImpl();
+        private IUniversityRepository universityRepository = new UniversityRepositoryImpl();
 
         private ReadingRoomTransformer transformer = new ReadingRoomTransformer();
         private SeatTransformer seatTransformer = new SeatTransformer();
@@ -206,6 +207,44 @@ namespace API.Services.Implementations
             }
 
             return numOfFreeSeats;
+        }
+
+
+        public List<ReadingRoomStatusDTO> GetStatuses(DateTime ETA, DateTime ETD)
+        {
+            List<ReadingRoomDTO> allReadingRooms;
+            List<ReadingRoomStatusDTO> retVal = null;
+            ReadingRoomStatusDTO status;
+            FACULTY faculty;
+            int freeSeats;
+            UNIVERSITY uni;
+
+            allReadingRooms = GetAll();
+
+            if (CheckHelper.IsFilled(allReadingRooms)) 
+            {
+                retVal = new List<ReadingRoomStatusDTO>();
+                foreach (ReadingRoomDTO rroom in allReadingRooms)
+                {
+                    faculty = facultyRepository.GetById(rroom.FacultyId);
+                    uni = universityRepository.GetById(faculty.UNI_ID);
+                    freeSeats = GetNumberOfFreeSeats(rroom.Id, ETA, ETD);
+
+                    status = new ReadingRoomStatusDTO()
+                    {
+                        ReadingRoom = rroom,
+                        FacultyId = faculty.FAC_ID,
+                        FacultyName = faculty.FAC_NAME,
+                        UniversityId = uni.UNI_ID,
+                        UniversityName = uni.UNI_NAME,
+                        FreeSeats = freeSeats
+                    };
+
+                    retVal.Add(status);
+                }
+            }
+
+            return retVal;
         }
     }
 }

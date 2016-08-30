@@ -23,6 +23,12 @@ namespace API.Controllers
             return rroomService.GetAll();
         }
 
+        [GET("api/rroom/schemas")]
+        public List<ReadingRoomStatusDTO> GetStatuses(DateTime ETA, DateTime ETD)
+        {
+            return rroomService.GetStatuses(ETA, ETD);
+        }
+
         // GET api/<controller>/5
         public ReadingRoomDTO Get(int id)
         {

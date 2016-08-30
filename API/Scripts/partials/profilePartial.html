@@ -60,7 +60,9 @@
         </td>
       </tr>
       <tr ng-if="loggedUser.Role === 'Student'">
-        <td>Novi fakultet: </td>
+        <td>
+					<span ng-if="mode==='EDIT'">Novi fakultet:</span> <span ng-if="mode==='VIEW'">Fakultet:</span>
+				</td>
         <td>
           <span ng-if="mode==='VIEW'">{{loggedUser.FacultyName}}</span>
           <select ng-model="editedUser.FacultyId" class="form-control" ng-if="mode==='EDIT'">

@@ -30,6 +30,10 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
 			    controller: 'rroomsController',
 			    templateUrl: 'Scripts/partials/rroomsPartial.html',
 			})
+      .when('/reservations', {
+			    controller: 'reservationController',
+			    templateUrl: 'Scripts/partials/reservationPartial.html',
+			})
 	    .otherwise({
 	        redirectTo: '/'
 	    });

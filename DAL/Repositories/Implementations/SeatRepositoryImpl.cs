@@ -107,9 +107,8 @@ namespace DAL.Repositories.Implementations
             {
                 using (ctx = new ReadingRoomsEntities())
                 {
-                    isFree = !GetById(id).RESERVATIONs
-                        .Any(r => (r.RES_ETA < ETA && r.RES_ETD > ETA) || 
-                            (r.RES_ETA < ETD && r.RES_ETD > ETD));
+                    var res = GetById(id).RESERVATIONs;
+                    isFree = res.All(r => (r.RES_ETA >= ETD || r.RES_ETD <= ETA));
                 }
             }
 

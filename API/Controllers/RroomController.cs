@@ -29,25 +29,29 @@ namespace API.Controllers
             return rroomService.GetById(id);
         }
 
-        [GET("api/faculty/{rroomId}/schema")]
-        public int GetFacStudents(int rroomId, [FromBody]IntervalDTO interval)
+        [GET("api/rroom/{rroomId}/schema")]
+        public int GetNumberOfFreeSeats(int rroomId, DateTime ETA, DateTime ETD)
         {
-            return rroomService.GetNumberOfFreeSeats(rroomId, interval.ETA, interval.ETD);
+            return rroomService.GetNumberOfFreeSeats(rroomId, ETA, ETD);
         }
 
         // POST api/<controller>
         [JWTAuthorize(ForbiddenRole = AppConstants.STUDENT)]
         public ReadingRoomDTO Post([FromBody]ReadingRoomDTO rroom)
         {
+            /*
             rroom.WorkingTimeFrom = rroom.WorkingTimeFrom.AddHours(2);
             rroom.WorkingTimeTo = rroom.WorkingTimeTo.AddHours(2);
 
+            
             if (rroom.ChecksIndex)
             {
                 rroom.ChecksIndexFrom = rroom.ChecksIndexFrom.AddHours(2);
                 rroom.ChecksIndexTo = rroom.ChecksIndexTo.AddHours(2);
             }
-            else 
+            else*/
+
+            if (!rroom.ChecksIndex)
             {
                 rroom.ChecksIndexFrom = DateTime.Now;
                 rroom.ChecksIndexTo = DateTime.Now;

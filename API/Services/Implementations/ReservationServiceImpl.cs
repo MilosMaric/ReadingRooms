@@ -52,7 +52,7 @@ namespace API.Services.Implementations
         {
             SEAT freeRandomSeat = null;
 
-            List<SEAT> schema = seatRepository.GetForReadingRoom(res.Id);
+            List<SEAT> schema = seatRepository.GetForReadingRoom(res.ReadingRoom.Id);
 
             foreach (var seat in schema)
             {

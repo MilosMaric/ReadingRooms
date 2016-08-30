@@ -70,5 +70,9 @@ div, h{
 }
 
 .timepicker {
-	padding: 0 12% !important;
+	padding: 0 10% !important;
+}
+
+.timepicker1 {
+	padding: 0 13% !important;
 }

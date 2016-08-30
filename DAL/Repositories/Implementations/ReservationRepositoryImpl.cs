@@ -30,6 +30,14 @@ namespace DAL.Repositories.Implementations
                         entity.RES_ID = maxReservation.RES_ID + 1;
                     }
 
+                    if (CheckHelper.IsFilled(entity.SEATs)) 
+                    {
+                        foreach (SEAT seat in entity.SEATs)
+                        {
+                            ctx.Entry(seat).State = EntityState.Unchanged;
+                        }
+                    }
+
                     insertedReservation = ctx.RESERVATIONs.Add(entity);
                     ctx.SaveChanges();
                 }

@@ -10,8 +10,7 @@
 	<script src="https://code.angularjs.org/1.2.9/angular-sanitize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="~/Scripts/jquery/jquery-2.1.4.min.js"></script>
     <link href="~/Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -60,7 +59,7 @@
         <a href="#/faculty" class="btn btn-primary" ng-if="user && user.Role == 'Manager'">
             <span class="glyphicon glyphicon-book" ></span><b> Fakultet</b></a>
         
-        <a href="#/rroom" class="btn btn-primary" ng-if="user && user.Role === 'Manager'">
+        <a href="#/rroom" class="btn btn-primary" ng-if="user && user.Role !== 'Admin'">
             <span class="glyphicon glyphicon-home" ></span><b> Čitaonica</b></a>
 
         <a href="#/reservations" class="btn btn-primary" ng-if="user && user.Role === 'Student'">

@@ -11,7 +11,7 @@ app.controller('rroomsController', ['$scope', '$window', 'userService', 'faculty
       userService.getLoggedUser().then(
         function(response) {
           if(response.data) {
-            if(response.data.Role !== "Manager") {
+            if(response.data.Role === "Administrator") {
               $window.location.href = "#/profile";
             } else {
               $scope.user = response.data;
@@ -20,9 +20,12 @@ app.controller('rroomsController', ['$scope', '$window', 'userService', 'faculty
                   if(response1.data && response1.data.length > 0) {
                     $scope.rroom = response1.data[0];
                     $scope.viewMode();
-                  } else {
+                  } else if($scope.user.Role === "Manager"){
                     $scope.initRroom();
                     $scope.editMode();
+                  } else if($scope.user.Role === "Student"){
+                    alert("Menadžer vašeg fakulteta još nije uneo podatke o čitaonici. Bićete preusmereni na stranicu vašeg profila.");
+                    $window.location.href = "#/profile";
                   }
                 }
               );
@@ -95,7 +98,8 @@ app.controller('rroomsController', ['$scope', '$window', 'userService', 'faculty
     }
 
     $scope.formatTime = function(date) {
-      return date.substr(11, 5);
+      var d = new Date(Date.parse(date));
+      return d.toTimeString().substr(0, 5);
     }
 
     $scope.checkWTFrom = function() {

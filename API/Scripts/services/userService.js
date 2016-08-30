@@ -1,12 +1,16 @@
 app.service('userService', function($http){
 	var url = '/api/user';
-	
+
 	this.login = function(user){
 		return $http.post("api/login", user);
 	}
 
   this.getLoggedUser = function(){
 		return $http.get("api/login");
+	}
+
+	this.getStudentReservations = function(id) {
+		return $http.get(url + "/" + id + "/reservations");
 	}
 
 	this.getAll = function() {

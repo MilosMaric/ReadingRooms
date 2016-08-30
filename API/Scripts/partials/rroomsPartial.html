@@ -37,10 +37,10 @@
         </tr>
         <tr ng-if="mode==='EDIT'">
           <td class="timepicker">
-            <timepicker ng-model="newRroom.WorkingTimeFrom" show-meridian="false" ng-class="{invalidInput :  checkWTFrom()}"/>
+						<div uib-timepicker ng-model="newRroom.WorkingTimeFrom" show-meridian="false" ng-class="{invalidInput :  checkWTFrom()}"></div>
           </td>
           <td class="timepicker">
-            <timepicker ng-model="newRroom.WorkingTimeTo" show-meridian="false" ng-class="{invalidInput :  checkWTTo()}"/>
+						<div uib-timepicker ng-model="newRroom.WorkingTimeTo" show-meridian="false" ng-class="{invalidInput :  checkWTTo()}"></div>
           </td>
         </tr>
         <tr ng-if="mode==='EDIT'">

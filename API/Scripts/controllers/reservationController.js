@@ -95,13 +95,19 @@ app.controller('reservationController', ['$scope', '$window', 'userService', 're
     }
 
     $scope.delete = function(id, idx) {
-      if(confirm("Da li ste sigurni da želite da otkažete rezervaciju?")) {
-        reservationService.delete(id).then(
-          function() {
-            $scope.reservations.splice(idx, 1);
-          }
-        );
-      }
+      $scope.deleteInfo = { id : id, idx : idx};
+      $scope.$parent.openModal(
+        "Da li ste sigurni da želite da otkažete rezervaciju?",
+        $scope.deleteCallback
+      );
+    }
+
+    $scope.deleteCallback = function() {
+      reservationService.delete($scope.deleteInfo.id).then(
+        function() {
+          $scope.reservations.splice($scope.deleteInfo.idx, 1);
+        }
+      );
     }
 
     $scope.refresh = function() {

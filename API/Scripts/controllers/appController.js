@@ -47,6 +47,27 @@ app.controller('appController', ['$scope', '$window', 'userService', function($s
       $scope.msg = undefined;
     }
 
+    $scope.openModal = function(msg, okCallback, cancelCallback) {
+      $scope.confirm = {};
+      $scope.confirm.msg = msg;
+      $scope.confirm.okCallback = okCallback;
+      $scope.confirm.cancelCallback = cancelCallback;
+    }
+
+    $scope.confirmOk = function() {
+      if($scope.confirm.okCallback) {
+        $scope.confirm.okCallback();
+      }
+      $scope.confirm = {};
+    }
+
+    $scope.confirmCancel = function() {
+      if($scope.confirm.cancelCallback) {
+        $scope.confirm.cancelCallback();
+      }
+      $scope.confirm = {};
+    }
+
     $scope.logout = function() {
       $scope.user = undefined;
       localStorage.clear();

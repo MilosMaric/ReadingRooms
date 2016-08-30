@@ -14,7 +14,7 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
       }
 
       if(loggedRole === "Administrator") {
-        $scope.deleteMsg = "U slučaju da obrišete nalog menadžera, obrisaće se i fakultet zajedno sa svim rezervacijama," +
+        $scope.deleteMsg = "U slučaju da obrišete nalog menadžera, obrisaće se i fakultet zajedno sa svim rezervacijama, " +
          "čitaonicama i studentima koji mu pripadaju. Da li ste sigurni da želite da obrišete nalog menadžera?"
         return "Manager";
       } else if(loggedRole === "Manager") {
@@ -127,22 +127,34 @@ app.controller('usersController', ['$scope', '$window', 'userService', 'universi
     }
 
     $scope.delete = function(facId, userId,  idx) {
-      if($scope.deleteMsg && confirm($scope.deleteMsg)) {
-        if($scope.$parent.user.Role === "Administrator") {
-          facultyService.delete(facId).then(
-            function() {
-              $scope.users.splice(idx, 1);
-              $scope.$parent.showMsg("SUCCESS", "Uspešno obrisan korisnik.");
+      if($scope.deleteMsg) {
+        $scope.deleteInfo = { facId : facId, userId : userId, idx : idx};
+        $scope.$parent.openModal(
+          $scope.deleteMsg,
+          $scope.deleteCallback
+        );
+      }
+    }
+
+    $scope.deleteCallback = function () {
+      if($scope.$parent.user.Role === "Administrator") {
+        facultyService.delete($scope.deleteInfo.facId).then(
+          function() {
+            $scope.users.splice($scope.deleteInfo.idx, 1);
+            if($scope.users.length === 0) {
+              $window.location.href = "#/profile";
             }
-          );
-        } else if($scope.$parent.user.Role === "Manager"){
-          userService.delete(userId).then(
-            function() {
-              $scope.users.splice(idx, 1);
-              $scope.$parent.showMsg("SUCCESS", "Uspešno obrisan korisnik.");
+          }
+        );
+      } else if($scope.$parent.user.Role === "Manager"){
+        userService.delete($scope.deleteInfo.userId).then(
+          function() {
+            $scope.users.splice($scope.deleteInfo.idx, 1);
+            if($scope.users.length  === 0) {
+              $window.location.href = "#/profile";
             }
-          );
-        }
+          }
+        );
       }
     }
 

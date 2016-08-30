@@ -47,6 +47,16 @@
 </head>
 <body ng-controller="appController" class="bg">
     @RenderBody()
+
+    <div ng-show="confirm.msg" class="confirm-overlay">
+        <div class="confirm-content centered">
+            <span><b>{{confirm.msg}}</b></span>
+            <br /><br />
+            <button class="btn btn-primary" type="button" ng-click="confirmOk()"><span class="glyphicon glyphicon-ok"></span>Da</button>
+            <button class="btn btn-danger" type="button" ng-click="confirmCancel()"><span class="glyphicon glyphicon-remove"></span>Ne</button>
+        </div>
+    </div>
+
     <div class="btn-group btn-group-justified" role="group">
         
         <a href="#/login" class="btn btn-primary" ng-if="!user">
@@ -83,6 +93,7 @@
       <span class="glyphicon glyphicon-remove rightSide" ng-click="closeMsnger()"></span>
        {{msg}}
     </div>
+
     <section ng-view></section>
 </body>
 </html>

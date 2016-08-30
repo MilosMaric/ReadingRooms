@@ -33,13 +33,19 @@ app.controller('uniController', ['$scope', '$window', 'universityService', funct
     };
 
     $scope.delete = function(id, idx) {
-      if(idx && confirm("Ako obrišete univerzitet, brišu se svi fakulteti i studenti koji mu pripadaju. Da li ste sigurni da želite da obrišete univerzitet?")) {
-        universityService.delete(id).then(
-          function() {
-            $scope.unis.splice(idx, 1);
-          }
-        );
-      }
+      $scope.deleteInfo = { id : id, idx : idx};
+      $scope.$parent.openModal(
+        "Ako obrišete univerzitet, brišu se svi fakulteti i studenti koji mu pripadaju. Da li ste sigurni da želite da obrišete univerzitet?",
+        $scope.deleteCallback
+      );
+    }
+
+    $scope.deleteCallback = function() {
+      universityService.delete($scope.deleteInfo.id).then(
+        function() {
+          $scope.unis.splice($scope.deleteInfo.idx, 1);
+        }
+      );
     }
 
     $scope.add = function() {

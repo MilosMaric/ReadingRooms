@@ -40,15 +40,9 @@ namespace API.Attributes
                     id = Convert.ToInt64(values["Id"]);
                     isAuthorized = service.isAuthorized(id, Role, ForbiddenRole);
                 }
-                catch (Exception) 
-                {
-                    isAuthorized = Anonymous;
-                }
+                catch (Exception) { isAuthorized = Anonymous; }
             }
-            else 
-            {
-                isAuthorized = Anonymous;
-            }
+            else {  isAuthorized = Anonymous;  }
 
             return isAuthorized;
         }

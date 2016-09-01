@@ -1,8 +1,8 @@
 <div class="centered"><br/><br/>
 	<h2>Rezervacije</h2>
 	<br/>
-	<div class="col-sm-4"></div>
-	<div class="col-sm-4 centered" >
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6 centered" >
     <div ng-if="mode == 'VIEW'">
       <button ng-click="addMode()" class="btn btn-primary" ng-if="rroom">
         <span class="glyphicon glyphicon-plus"></span> Nova rezervacija</button>
@@ -31,7 +31,8 @@
         </tbody>
       </table>
     </div>
-    <div ng-if="mode !== 'VIEW'">
+		<div ng-if="mode !== 'VIEW'" class="col-sm-2"></div>
+    <div ng-if="mode !== 'VIEW'" class="col-sm-8">
       <table class="table table-striped">
         <tbody>
           <tr>
